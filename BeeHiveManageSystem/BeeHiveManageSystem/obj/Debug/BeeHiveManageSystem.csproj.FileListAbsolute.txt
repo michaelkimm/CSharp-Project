@@ -1,0 +1,10 @@
+C:\Users\Admin\Desktop\BeeHiveManageSystem\BeeHiveManageSystem\bin\Debug\BeeHiveManageSystem.exe.config
+C:\Users\Admin\Desktop\BeeHiveManageSystem\BeeHiveManageSystem\bin\Debug\BeeHiveManageSystem.exe
+C:\Users\Admin\Desktop\BeeHiveManageSystem\BeeHiveManageSystem\bin\Debug\BeeHiveManageSystem.pdb
+C:\Users\Admin\Desktop\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.Form1.resources
+C:\Users\Admin\Desktop\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.Properties.Resources.resources
+C:\Users\Admin\Desktop\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.exe
+C:\Users\Admin\Desktop\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.pdb
