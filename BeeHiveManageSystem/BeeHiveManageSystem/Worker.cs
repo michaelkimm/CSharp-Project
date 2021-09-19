@@ -15,11 +15,15 @@ namespace BeeHiveManageSystem
             get { return currentJob; }
             private set { currentJob = value; }
         }
-        public int ShiftLeft { get; private set; }
 
-        string[] jobsICanDo;
         int shiftsToWork = 0;
         int shiftsWorked = 0;
+        public int ShiftLeft
+        {
+            get { return shiftsToWork - shiftsWorked; }
+        }
+
+        string[] jobsICanDo;
 
         public Worker(string[] jobsICanDo)
         {
@@ -43,20 +47,24 @@ namespace BeeHiveManageSystem
                     return true;
                 }
             }
-
             return false;
         }
 
-        public string WorkOneShift()
+        public bool WorkOneShift()
         {
             if (string.IsNullOrEmpty(currentJob))
-                return "";
+                return false;
 
-            shiftsToWork--;
-            if (shiftsToWork < 0) shiftsToWork = 0;
             shiftsWorked++;
+            if (shiftsToWork == shiftsWorked)
+            {
+                shiftsToWork = 0;
+                shiftsWorked = 0;
+                currentJob = "";
+                return true;
+            }
 
-            return "Worker ";
+            return false;
         }
     }
 }

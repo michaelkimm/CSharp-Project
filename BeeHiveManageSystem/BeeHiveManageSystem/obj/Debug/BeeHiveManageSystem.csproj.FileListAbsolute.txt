@@ -18,3 +18,13 @@ C:\Users\Admin\Desktop\C# Project\C--Project\BeeHiveManageSystem\BeeHiveManageSy
 C:\Users\Admin\Desktop\C# Project\C--Project\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Desktop\C# Project\C--Project\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.exe
 C:\Users\Admin\Desktop\C# Project\C--Project\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.pdb
+C:\Users\alstj\OneDrive\바탕 화면\Github\CSharp-Project\BeeHiveManageSystem\BeeHiveManageSystem\bin\Debug\BeeHiveManageSystem.exe.config
+C:\Users\alstj\OneDrive\바탕 화면\Github\CSharp-Project\BeeHiveManageSystem\BeeHiveManageSystem\bin\Debug\BeeHiveManageSystem.exe
+C:\Users\alstj\OneDrive\바탕 화면\Github\CSharp-Project\BeeHiveManageSystem\BeeHiveManageSystem\bin\Debug\BeeHiveManageSystem.pdb
+C:\Users\alstj\OneDrive\바탕 화면\Github\CSharp-Project\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.csprojAssemblyReference.cache
+C:\Users\alstj\OneDrive\바탕 화면\Github\CSharp-Project\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.Form1.resources
+C:\Users\alstj\OneDrive\바탕 화면\Github\CSharp-Project\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.Properties.Resources.resources
+C:\Users\alstj\OneDrive\바탕 화면\Github\CSharp-Project\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.csproj.GenerateResource.cache
+C:\Users\alstj\OneDrive\바탕 화면\Github\CSharp-Project\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.csproj.CoreCompileInputs.cache
+C:\Users\alstj\OneDrive\바탕 화면\Github\CSharp-Project\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.exe
+C:\Users\alstj\OneDrive\바탕 화면\Github\CSharp-Project\BeeHiveManageSystem\BeeHiveManageSystem\obj\Debug\BeeHiveManageSystem.pdb
