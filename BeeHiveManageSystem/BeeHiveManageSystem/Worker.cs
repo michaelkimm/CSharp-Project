@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace BeeHiveManageSystem
 {
-    class Worker
+    class Worker : Bee
     {
         private string currentJob = "";
         public string CurrentJob
@@ -18,14 +18,15 @@ namespace BeeHiveManageSystem
 
         int shiftsToWork = 0;
         int shiftsWorked = 0;
-        public int ShiftLeft
+        public override int ShiftLeft
         {
             get { return shiftsToWork - shiftsWorked; }
         }
 
         string[] jobsICanDo;
 
-        public Worker(string[] jobsICanDo)
+        public Worker(string[] jobsICanDo, float weight)
+            : base(weight)
         {
             this.jobsICanDo = jobsICanDo;
         }

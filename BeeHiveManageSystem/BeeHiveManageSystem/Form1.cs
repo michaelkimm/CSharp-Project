@@ -26,10 +26,10 @@ namespace BeeHiveManageSystem
         void InitializeBees()
         {
             Worker[] workers = new Worker[WORKER_CNT];
-            workers[0] = new Worker(new string[] { "Nectar collector", "Honey manufaturing" });
-            workers[1] = new Worker(new string[] { "Egg care", "Baby bee tutoring" });
-            workers[2] = new Worker(new string[] { "Hive maintenance", "Sting patrol" });
-            workers[3] = new Worker(new string[] { "Nectar collector", "Honey manufaturing", "Egg care", "Baby bee tutoring", "Hive maintenance", "Sting patrol" });
+            workers[0] = new Worker(new string[] { "Nectar collector", "Honey manufaturing" }, 175);
+            workers[1] = new Worker(new string[] { "Egg care", "Baby bee tutoring" }, 114);
+            workers[2] = new Worker(new string[] { "Hive maintenance", "Sting patrol" }, 149);
+            workers[3] = new Worker(new string[] { "Nectar collector", "Honey manufaturing", "Egg care", "Baby bee tutoring", "Hive maintenance", "Sting patrol" }, 155);
 
             queen = new Queen(workers);
         }
