@@ -11,49 +11,41 @@ namespace AdventureGame
     class Enemy : GameUnit
     {
 
-        public Enemy (PictureBox pictureBox, Label label, Point pose, int speed, int initialHitPoint, int power)
-            : base(pictureBox, label, pose, speed, initialHitPoint, power)
+        public Enemy (PictureBox pictureBox, Label label, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+            : base(pictureBox, label, pose, speed, initialHitPoint, initialMp, power, detectLength)
         {
 
         }
 
-        public Enemy(PictureBox pictureBox, Label label, int x, int y, int speed, int initialHitPoint, int power)
-            : base(pictureBox, label, x, y, speed, initialHitPoint, power)
+        public Enemy(PictureBox pictureBox, Label label, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+            : base(pictureBox, label, x, y, speed, initialHitPoint, initialMp, power, detectLength)
         {
 
         }
 
-        public bool Detected(Player player)
+        public override bool Detected(GameUnit gameUnit)
         {
-            //unitPictureBox.Location
-            return true;
+            if (!(gameUnit is Player))
+                return false;
+
+            Player player = gameUnit as Player;
+            if ((player.Pose.X - this.Pose.X) * (player.Pose.X - this.Pose.X) + (player.Pose.Y - this.Pose.Y) * (player.Pose.Y - this.Pose.Y) <= detectLength * detectLength)
+                return true;
+            else
+                return false;
         }
 
-        public void Attack(Player player)
+        public override void Attack(GameUnit gameUnit)
         {
+            if (!(gameUnit is Player))
+                return;
+
             if (IsDead) return;
-        }
+            if (gameUnit.IsDead) return;
 
-        public override void Move(EnumClass.MoveDir dir)
-        {
-            if (IsDead) return;
-            switch (dir)
-            {
-                case EnumClass.MoveDir.Left:
-                    pose.X -= speed;
-                    break;
-                case EnumClass.MoveDir.Up:
-                    pose.Y -= speed;
-                    break;
-                case EnumClass.MoveDir.Right:
-                    pose.X += speed;
-                    break;
-                case EnumClass.MoveDir.Down:
-                    pose.Y += speed;
-                    break;
-            }
+            Player player = gameUnit as Player;
+            player.Attacked(power);
         }
-
     }
 }
 

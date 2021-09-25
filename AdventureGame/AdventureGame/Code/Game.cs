@@ -24,11 +24,12 @@ namespace AdventureGame
         Enemy[] enemies;
         Item[] items;
 
-        public Game (Player player, Enemy[] enemies, Item[] items) //, Enemy[] enemys, Item[] items)
+        public Game (Player player, Enemy[] enemies) //, Enemy[] enemys, Item[] items, Item[] equipments)
         {
             this.player = player;
             this.enemies = enemies;
-            this.items = items;
+            //this.items = items;
+            //this.equipments = equipments;
         }
 
         public void Move(EnumClass.MoveDir dir)
@@ -87,11 +88,6 @@ namespace AdventureGame
             {
                 enemy.UpdateVisibleInfo();
             }
-        }
-
-        public void Equip(Weapon wea)
-        {
-            //player.equip()
         }
     }
 }

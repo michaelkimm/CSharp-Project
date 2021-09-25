@@ -14,12 +14,10 @@ namespace AdventureGame
     {
         int playerSpeed = 10;
         int playerHitPoint = 15;
-        int playerMp = 15;
         int playerPower = 1;
         int playerDetectLength = 30;
 
         int enemyHitPoint = 10;
-        int enemyMp = 15;
         int enemySpeed = 8;
         int enemyPower = 1;
         int enemyDetectLength = 30;
@@ -28,6 +26,7 @@ namespace AdventureGame
         Player player;
         Enemy[] enemys;
         Item[] items;
+        Item[] equipments;
 
         public Form1()
         {
@@ -38,31 +37,20 @@ namespace AdventureGame
 
         void InitializeGame()
         {
-            player = new Player(pbPlayer, lbPlayer ,96, 63, playerSpeed, playerHitPoint, playerMp, playerPower, playerDetectLength);
+            player = new Player(pbPlayer, lbPlayer ,96, 63, playerSpeed, playerHitPoint, playerPower, playerDetectLength);
 
             InitializeEnemy();
-            InitializeItem();
 
-            gameManager = new Game(player, enemys, items);
+            gameManager = new Game(player, enemys);
         }
 
         void InitializeEnemy()
         {
             enemys = new Enemy[3];
             
-            enemys[0] = new Enemy(pbBat, lbBat, 168, 63, enemySpeed, enemyHitPoint, enemyMp, enemyPower, enemyDetectLength);
-            enemys[1] = new Enemy(pbGhost, lbGhost, 204, 63, enemySpeed, enemyHitPoint, enemyMp, enemyPower, enemyDetectLength);
-            enemys[2] = new Enemy(pbGhoul, lbGhoul, 240, 63, enemySpeed, enemyHitPoint, enemyMp, enemyPower, enemyDetectLength);
-        }
-
-        void InitializeItem()
-        {
-            items = new Item[5];
-            items[0] = new Weapon(pbSwordItem, 132, 63, 1);
-            items[1] = new Weapon(pbBowItem, 276, 63, 2);
-            items[2] = new Weapon(pbBowItem, 387, 63, 2);
-            items[3] = new RedPotion(pbPotionRedItem, 312, 63, 5);
-            items[3] = new BluePotion(pbPotionBlueItem, 348, 63, 5);
+            enemys[0] = new Enemy(pbBat, lbBat, 168, 63, enemySpeed, enemyHitPoint, enemyPower, enemyDetectLength);
+            enemys[1] = new Enemy(pbGhost, lbGhost, 204, 63, enemySpeed, enemyHitPoint, enemyPower, enemyDetectLength);
+            enemys[2] = new Enemy(pbGhoul, lbGhoul, 240, 63, enemySpeed, enemyHitPoint, enemyPower, enemyDetectLength);
         }
 
         private void textBox5_TextChanged(object sender, EventArgs e)
@@ -97,10 +85,6 @@ namespace AdventureGame
         private void lbPlayer_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void pbSwordEquipped_Click(object sender, EventArgs e)
-        {
         }
 
         //private void button1_Click(object sender, EventArgs e)

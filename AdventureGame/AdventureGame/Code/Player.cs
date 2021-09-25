@@ -13,14 +13,14 @@ namespace AdventureGame
         Item equipments;
         List<Item> inventory;
 
-        public Player(PictureBox pictureBox, Label label, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
-            : base(pictureBox, label, pose, speed, initialHitPoint, initialMp, power, detectLength)
+        public Player(PictureBox pictureBox, Label label, Point pose, int speed, int initialHitPoint, int power, int detectLength)
+            : base(pictureBox, label, pose, speed, initialHitPoint, power, detectLength)
         {
 
         }
 
-        public Player(PictureBox pictureBox, Label label, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
-            : base(pictureBox, label, x, y, speed, initialHitPoint, initialMp, power, detectLength)
+        public Player(PictureBox pictureBox, Label label, int x, int y, int speed, int initialHitPoint, int power, int detectLength)
+            : base(pictureBox, label, x, y, speed, initialHitPoint, power, detectLength)
         {
 
         }
@@ -49,14 +49,25 @@ namespace AdventureGame
             enemy.Attacked(power);
         }
 
-        public void equip(Weapon weapon)
+        public override void Move(EnumClass.MoveDir dir)
         {
-            // 이전 장착된 것 해제
-            equipments.UnitPictureBox.BorderStyle = BorderStyle.None;
-
-            // 새로 장착
-            equipments = weapon;
-            equipments.UnitPictureBox.BorderStyle = BorderStyle.FixedSingle;
+            if (IsDead) return;
+            
+            switch (dir)
+            {
+                case EnumClass.MoveDir.Left:
+                    pose.X -= speed;
+                    break;
+                case EnumClass.MoveDir.Up:
+                    pose.Y -= speed;
+                    break;
+                case EnumClass.MoveDir.Right:
+                    pose.X += speed;
+                    break;
+                case EnumClass.MoveDir.Down:
+                    pose.Y += speed;
+                    break;
+            }
         }
     }
 }

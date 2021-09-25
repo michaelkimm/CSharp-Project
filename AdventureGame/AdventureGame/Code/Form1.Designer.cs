@@ -321,7 +321,6 @@ namespace AdventureGame
             this.pbSwordEquipped.Size = new System.Drawing.Size(50, 50);
             this.pbSwordEquipped.TabIndex = 20;
             this.pbSwordEquipped.TabStop = false;
-            this.pbSwordEquipped.Click += new System.EventHandler(this.pbSwordEquipped_Click);
             // 
             // pbPotionRedEquipped
             // 
