@@ -23,16 +23,50 @@ namespace AdventureGame
 
         }
 
-        public override bool Detected(GameUnit gameUnit)
+        public override bool Detected(GameUnit gameUnit, EnumClass.MoveDir dir)
         {
+            bool result = false;
+
             if (!(gameUnit is Player))
                 return false;
 
             Player player = gameUnit as Player;
             if ((player.Pose.X - this.Pose.X) * (player.Pose.X - this.Pose.X) + (player.Pose.Y - this.Pose.Y) * (player.Pose.Y - this.Pose.Y) <= detectLength * detectLength)
-                return true;
+                result = true;
             else
                 return false;
+
+            switch (dir)
+            {
+                case EnumClass.MoveDir.Left:
+                    if (!((this.Pose.X - player.Pose.X) >= 0))
+                    {
+                        result = false;
+                    }
+                    break;
+                case EnumClass.MoveDir.Up:
+                    if (!((this.Pose.Y - player.Pose.Y) >= 0))
+                    {
+                        result = false;
+                    }
+                    break;
+                case EnumClass.MoveDir.Right:
+                    if (!((this.Pose.X - player.Pose.X) <= 0))
+                    {
+                        result = false;
+                    }
+                    break;
+                case EnumClass.MoveDir.Down:
+                    if (!((this.Pose.Y - player.Pose.Y) <= 0))
+                    {
+                        result = false;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
         }
 
         public override void Attack(GameUnit gameUnit)

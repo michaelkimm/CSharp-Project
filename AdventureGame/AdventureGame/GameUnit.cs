@@ -120,7 +120,7 @@ namespace AdventureGame
             }
         }
         public abstract void Attack(GameUnit gameUnit);
-        public abstract bool Detected(GameUnit gameUnit);
+        public abstract bool Detected(GameUnit gameUnit, EnumClass.MoveDir dir);
         virtual public void Attacked(int hp)
         {
             hitPoint -= hp;
@@ -131,7 +131,7 @@ namespace AdventureGame
             }
         }
 
-        public void UpdateVisibleInfo()
+        public virtual void UpdateVisibleInfo()
         {
             UpdatePose();
             UpdateHitPoint();

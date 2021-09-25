@@ -67,6 +67,7 @@ namespace AdventureGame
             this.pbPotionBlueItem = new System.Windows.Forms.PictureBox();
             this.pbMazeItem = new System.Windows.Forms.PictureBox();
             this.btnMoveUp = new System.Windows.Forms.Button();
+            this.btnItemGenerator = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbSwordEquipped)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbPotionRedEquipped)).BeginInit();
@@ -142,6 +143,7 @@ namespace AdventureGame
             this.btnAtkDown.TabIndex = 17;
             this.btnAtkDown.Text = "Down";
             this.btnAtkDown.UseVisualStyleBackColor = true;
+            this.btnAtkDown.Click += new System.EventHandler(this.btnAtkDown_Click);
             // 
             // btnAtkRight
             // 
@@ -151,6 +153,7 @@ namespace AdventureGame
             this.btnAtkRight.TabIndex = 16;
             this.btnAtkRight.Text = "Right";
             this.btnAtkRight.UseVisualStyleBackColor = true;
+            this.btnAtkRight.Click += new System.EventHandler(this.btnAtkRight_Click);
             // 
             // btnAtkLeft
             // 
@@ -160,6 +163,7 @@ namespace AdventureGame
             this.btnAtkLeft.TabIndex = 15;
             this.btnAtkLeft.Text = "Left";
             this.btnAtkLeft.UseVisualStyleBackColor = true;
+            this.btnAtkLeft.Click += new System.EventHandler(this.btnAtkLeft_Click);
             // 
             // btnAtkUp
             // 
@@ -169,6 +173,7 @@ namespace AdventureGame
             this.btnAtkUp.TabIndex = 14;
             this.btnAtkUp.Text = "Up";
             this.btnAtkUp.UseVisualStyleBackColor = true;
+            this.btnAtkUp.Click += new System.EventHandler(this.btnAtkUp_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -321,6 +326,7 @@ namespace AdventureGame
             this.pbSwordEquipped.Size = new System.Drawing.Size(50, 50);
             this.pbSwordEquipped.TabIndex = 20;
             this.pbSwordEquipped.TabStop = false;
+            this.pbSwordEquipped.Visible = false;
             this.pbSwordEquipped.Click += new System.EventHandler(this.pbSwordEquipped_Click);
             // 
             // pbPotionRedEquipped
@@ -332,6 +338,8 @@ namespace AdventureGame
             this.pbPotionRedEquipped.Size = new System.Drawing.Size(50, 50);
             this.pbPotionRedEquipped.TabIndex = 21;
             this.pbPotionRedEquipped.TabStop = false;
+            this.pbPotionRedEquipped.Visible = false;
+            this.pbPotionRedEquipped.Click += new System.EventHandler(this.pbPotionRedEquipped_Click);
             // 
             // pbPotionBlueEquipped
             // 
@@ -342,6 +350,8 @@ namespace AdventureGame
             this.pbPotionBlueEquipped.Size = new System.Drawing.Size(50, 50);
             this.pbPotionBlueEquipped.TabIndex = 22;
             this.pbPotionBlueEquipped.TabStop = false;
+            this.pbPotionBlueEquipped.Visible = false;
+            this.pbPotionBlueEquipped.Click += new System.EventHandler(this.pbPotionBlueEquipped_Click);
             // 
             // pbBowEquipped
             // 
@@ -352,6 +362,8 @@ namespace AdventureGame
             this.pbBowEquipped.Size = new System.Drawing.Size(50, 50);
             this.pbBowEquipped.TabIndex = 23;
             this.pbBowEquipped.TabStop = false;
+            this.pbBowEquipped.Visible = false;
+            this.pbBowEquipped.Click += new System.EventHandler(this.pbBowEquipped_Click);
             // 
             // pbMaceEquipped
             // 
@@ -362,6 +374,8 @@ namespace AdventureGame
             this.pbMaceEquipped.Size = new System.Drawing.Size(50, 50);
             this.pbMaceEquipped.TabIndex = 24;
             this.pbMaceEquipped.TabStop = false;
+            this.pbMaceEquipped.Visible = false;
+            this.pbMaceEquipped.Click += new System.EventHandler(this.pbMaceEquipped_Click);
             // 
             // pbPlayer
             // 
@@ -472,6 +486,16 @@ namespace AdventureGame
             this.btnMoveUp.UseVisualStyleBackColor = true;
             this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
             // 
+            // btnItemGenerator
+            // 
+            this.btnItemGenerator.Location = new System.Drawing.Point(647, 239);
+            this.btnItemGenerator.Name = "btnItemGenerator";
+            this.btnItemGenerator.Size = new System.Drawing.Size(75, 23);
+            this.btnItemGenerator.TabIndex = 35;
+            this.btnItemGenerator.Text = "Item";
+            this.btnItemGenerator.UseVisualStyleBackColor = true;
+            this.btnItemGenerator.Click += new System.EventHandler(this.btnItemGenerator_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -480,6 +504,7 @@ namespace AdventureGame
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(784, 399);
+            this.Controls.Add(this.btnItemGenerator);
             this.Controls.Add(this.btnMoveUp);
             this.Controls.Add(this.pbMazeItem);
             this.Controls.Add(this.pbPotionBlueItem);
@@ -567,6 +592,7 @@ namespace AdventureGame
         private System.Windows.Forms.PictureBox pbPotionBlueItem;
         private System.Windows.Forms.PictureBox pbMazeItem;
         private System.Windows.Forms.Button btnMoveUp;
+        private System.Windows.Forms.Button btnItemGenerator;
     }
 }
 

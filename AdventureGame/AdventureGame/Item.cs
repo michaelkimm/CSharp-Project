@@ -10,21 +10,60 @@ namespace AdventureGame
 {
     abstract class Item
     {
-        protected PictureBox unitPictureBox;
-        protected Point pose;
+        protected PictureBox pbIngameItem;//  unitPictureBox;
+        protected PictureBox pbInventoryItem;
+        private Point pose;
+        string name;
 
-        public Item(PictureBox pictureBox, Point pose)
+        public Item(PictureBox pbIngameItem, PictureBox pbInventoryItem, Point pose, string name)
         {
-            unitPictureBox = pictureBox;
-            this.pose = pose;
+            this.pbIngameItem = pbIngameItem;
+            this.pbInventoryItem = pbInventoryItem;
+            Pose = pose;
+            pbIngameItem.Visible = false;
+            this.name = name;
+
         }
-        public Item(PictureBox pictureBox, int x, int y)
+        public Item(PictureBox pbIngameItem, PictureBox pbInventoryItem, int x, int y, string name)
         {
-            unitPictureBox = pictureBox;
-            this.pose = new Point(x, y);
+            this.pbIngameItem = pbIngameItem;
+            this.pbInventoryItem = pbInventoryItem;
+            Pose = new Point(x, y);
+            pbIngameItem.Visible = false;
+            this.name = name;
         }
 
-        public PictureBox UnitPictureBox { get { return unitPictureBox; } }
-        public Point Pose { get { return pose; } }
+        public void ActiveIngame(bool value)
+        {
+            pbIngameItem.Visible = value;
+        }
+        public void ActiveInventory(bool value)
+        {
+            pbInventoryItem.Visible = value;
+        }
+
+        public void UpdateVisibleInfo()
+        {
+            pbIngameItem.Location = pose;
+            pbInventoryItem.Location = pose;
+        }
+
+        public PictureBox PbIngameItem { get { return pbIngameItem; } }
+        public PictureBox PbInventoryItem { get { return pbInventoryItem; } }
+        public string Name { get { return name; } }
+
+        public Point Pose
+        { 
+            get 
+            {
+                return pose;
+            }
+            set 
+            {
+                pose = value;
+                pbIngameItem.Location = pose;
+                pbInventoryItem.Location = pose;
+            }
+        }
     }
 }

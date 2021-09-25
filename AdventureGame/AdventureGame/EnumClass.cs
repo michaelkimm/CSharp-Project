@@ -8,6 +8,6 @@ namespace AdventureGame
 {
     class EnumClass
     {
-        public enum MoveDir { Left, Up, Right, Down };
+        public enum MoveDir {None, Left, Up, Right, Down };
     }
 }

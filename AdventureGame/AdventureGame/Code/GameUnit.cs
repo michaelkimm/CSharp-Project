@@ -8,33 +8,56 @@ using System.Drawing;
 
 namespace AdventureGame
 {
+
+    public struct Ability
+    {
+        public int HitPoint;
+        public int Mp;
+        public int Speed;
+        public int Power;
+        public int DetectLength;
+
+        public Ability(int initialHitPoint, int initialMp, int speed, int power, int detectLength)
+        {
+            this.HitPoint = initialHitPoint;
+            this.Mp = initialMp;
+            this.Speed = speed;
+            this.Power = power;
+            this.DetectLength = detectLength;
+        }
+    }
     abstract class GameUnit
     {
         protected PictureBox unitPictureBox;
         protected Label unitLabel;
-        protected int hitPoint = 0;
         protected Point pose;
+        // protected Ability ability;
+
+        protected int hitPoint = 0;
+        protected int mp = 0;
         protected int speed;
         protected int power;
         protected int detectLength;
 
-        public GameUnit(PictureBox pictureBox, Label unitLabel, Point pose, int speed, int initialHitPoint, int power, int detectLength)
+        public GameUnit(PictureBox pictureBox, Label unitLabel, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
         {
             unitPictureBox = pictureBox;
             this.unitLabel = unitLabel;
             this.pose = pose;
-            this.speed = speed;
             hitPoint = initialHitPoint;
+            mp = initialMp;
+            this.speed = speed;
             this.power = power;
             this.detectLength = detectLength;
         }
-        public GameUnit(PictureBox pictureBox, Label unitLabel, int x, int y, int speed, int initialHitPoint, int power, int detectLength)
+        public GameUnit(PictureBox pictureBox, Label unitLabel, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
         {
             unitPictureBox = pictureBox;
             this.unitLabel = unitLabel;
             this.pose = new Point(x, y);
             this.speed = speed;
             hitPoint = initialHitPoint;
+            mp = initialMp;
             this.power = power;
             this.detectLength = detectLength;
         }
@@ -44,6 +67,7 @@ namespace AdventureGame
         public Label UnitLabel { get { return unitLabel; } }
 
         public int HitPoint { get { return hitPoint; } }
+        public int Mp { get { return mp; } }
 
         public Point Pose { get { return pose; } }
         public int Speed { get { return speed; } }
@@ -57,19 +81,57 @@ namespace AdventureGame
             }
         }
 
-        public abstract void Move(EnumClass.MoveDir dir);
+        public void HpChange(int hp)
+        {
+            this.hitPoint += hp;
+        }
+
+        public void MpChange(int mp)
+        {
+            this.mp += mp;
+        }
+
+        public virtual void Move(EnumClass.MoveDir dir)
+        {
+            if (IsDead) return;
+
+            Point prePose = pose;
+
+            switch (dir)
+            {
+                case EnumClass.MoveDir.Left:
+                    pose.X -= speed;
+                    break;
+                case EnumClass.MoveDir.Up:
+                    pose.Y -= speed;
+                    break;
+                case EnumClass.MoveDir.Right:
+                    pose.X += speed;
+                    break;
+                case EnumClass.MoveDir.Down:
+                    pose.Y += speed;
+                    break;
+            }
+
+            // 화면 밖으로 나가면, 원위치
+            if (pose.X < 0 || pose.Y < 0 || pose.X > 600 || pose.Y > 400)
+            {
+                pose = prePose;
+            }
+        }
         public abstract void Attack(GameUnit gameUnit);
-        public abstract bool Detected(GameUnit gameUnit);
+        public abstract bool Detected(GameUnit gameUnit, EnumClass.MoveDir dir);
         virtual public void Attacked(int hp)
         {
             hitPoint -= hp;
-            if (hp <= 0)
-                hp = 0;
-
-            unitPictureBox.Visible = false;
+            if (hitPoint <= 0)
+            {
+                hitPoint = 0;
+                unitPictureBox.Visible = false;
+            }
         }
 
-        public void UpdateVisibleInfo()
+        public virtual void UpdateVisibleInfo()
         {
             UpdatePose();
             UpdateHitPoint();
