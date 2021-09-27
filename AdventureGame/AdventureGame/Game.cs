@@ -18,7 +18,7 @@ namespace AdventureGame
         Rectangle boundary;
         Random randomMaker;
 
-        public Game (Player player, Enemy[] enemies, Item[] itemdata, Rectangle boundary) //, Enemy[] enemys, Item[] items)
+        public Game(Player player, Enemy[] enemies, Item[] itemdata, Rectangle boundary) //, Enemy[] enemys, Item[] items)
         {
             this.player = player;
             this.enemies = enemies;
