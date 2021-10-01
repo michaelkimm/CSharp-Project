@@ -26,11 +26,11 @@ namespace AdventureGame
             this.DetectLength = detectLength;
         }
     }
-    abstract class GameUnit
+    abstract class GameUnit : GameObject
     {
         protected PictureBox unitPictureBox;
         protected Label unitLabel;
-        protected Point pose;
+        
         // protected Ability ability;
 
         protected int hitPoint = 0;
@@ -39,7 +39,8 @@ namespace AdventureGame
         protected int power;
         protected int detectLength;
 
-        public GameUnit(PictureBox pictureBox, Label unitLabel, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+        public GameUnit(Game game, PictureBox pictureBox, Label unitLabel, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+            : base(game)
         {
             unitPictureBox = pictureBox;
             this.unitLabel = unitLabel;
@@ -50,7 +51,8 @@ namespace AdventureGame
             this.power = power;
             this.detectLength = detectLength;
         }
-        public GameUnit(PictureBox pictureBox, Label unitLabel, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+        public GameUnit(Game game, PictureBox pictureBox, Label unitLabel, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+            : base(game)
         {
             unitPictureBox = pictureBox;
             this.unitLabel = unitLabel;
@@ -119,7 +121,10 @@ namespace AdventureGame
                 pose = prePose;
             }
         }
-        public abstract void Attack(GameUnit gameUnit);
+        virtual public void Attack(EnumClass.MoveDir dir)
+        {
+
+        }
         public abstract bool Detected(GameUnit gameUnit, EnumClass.MoveDir dir);
         virtual public void Attacked(int hp)
         {

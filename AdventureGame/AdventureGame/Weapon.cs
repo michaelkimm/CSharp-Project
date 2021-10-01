@@ -12,23 +12,32 @@ namespace AdventureGame
     {
         int power;
 
-        public Weapon(PictureBox pbIngame, PictureBox pbInventory, Point pose, int power, string name)
-            : base(pbIngame, pbInventory, pose, name)
+        public Weapon(Game game, PictureBox pictureBox, Point pose, int power, string name)
+            : base(game, pictureBox, pose, name)
         {
             this.power = power;
         }
 
-        public Weapon(PictureBox pbIngame, PictureBox pbInventory, int x, int y, int power, string name)
-            : base(pbIngame, pbInventory, x, y, name)
+        public Weapon(Game game, PictureBox pictureBox, int x, int y, int power, string name)
+            : base(game, pictureBox, x, y, name)
         {
             this.power = power;
         }
 
         public int Power { get { return power; } }
-        public void Attack(GameUnit gameUnit, int plusPower)
+        public void Attack(EnumClass.MoveDir dir, int UserPower)
         {
-            // 무기는 목표물을 공격한다
-            gameUnit.Attacked(Power + plusPower);
+            for (int i = 0; i < game.enemies.Count; i++)
+            {
+                GameObject collidObj = this.CollisionWith(game.enemies[i]);
+                if (collidObj == null)
+                    continue;
+
+                // 무기는 적을 공격한다
+                Enemy enemy = collidObj as Enemy;
+                enemy.Attacked(this.Power + UserPower);
+                
+            }
         }
     }
 }

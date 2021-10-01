@@ -10,16 +10,18 @@ namespace AdventureGame
 {
     class Game
     {
-        Player player;
-        Enemy[] enemies;
-        Item[] itemData;
-        List<Item> inGameItems;
+        public Player player;
+        public List<Enemy> enemies;
+        List<Item> itemData;
+        public Dictionary<string, GameObjectDB> gameObjDB;
+        public List<Item> inGameItems;
 
         Rectangle boundary;
         Random randomMaker;
 
-        public Game(Player player, Enemy[] enemies, Item[] itemdata, Rectangle boundary) //, Enemy[] enemys, Item[] items)
+        public Game(Dictionary<string, GameObjectDB> gameObjDB, Player player, List<Enemy> enemies, List<Item> itemdata, Rectangle boundary) //, Enemy[] enemys, Item[] items)
         {
+            this.gameObjDB = gameObjDB;
             this.player = player;
             this.enemies = enemies;
             this.itemData = itemdata;
@@ -28,47 +30,38 @@ namespace AdventureGame
             randomMaker = new Random();
         }
 
-        public void Move(EnumClass.MoveDir dir)
+        public void Move(EnumClass.MoveDir dir, Random random)
         {
             // 플레이어 움직임 & 아이템 획득
             player.Move(dir);
-            Item foundItem = player.FindCollision(inGameItems);
-            if (foundItem != null)
-            {
-                MessageBox.Show("Found Item");
-                player.GetItem(foundItem);
-                inGameItems.Remove(foundItem);
-            }
+            
 
             // 적 움직임 & 공격
-            MoveEnemy();
+            MoveEnemy(random);
         }
 
-        private void MoveEnemy()
+        private void MoveEnemy(Random random)
         {
-            Random random = new Random();
             Type type = typeof(EnumClass.MoveDir);
 
             Array values = type.GetEnumValues();
 
             foreach (Enemy enemy in enemies)
             {
+                // 움직일 방향 랜덤으로 선정
                 int index = random.Next(values.Length);
                 EnumClass.MoveDir moveDir = (EnumClass.MoveDir)values.GetValue(index);
 
                 enemy.Move(moveDir);
-                if (enemy.Detected(player, EnumClass.MoveDir.None))
-                    enemy.Attack(player);
             }
         }
 
-        public void Attack(EnumClass.MoveDir dir)
+        public void Attack(EnumClass.MoveDir dir, Random random)
         {
-            foreach (Enemy enemy in enemies)
-            {
-                if (player.Detected(enemy, dir))
-                    player.Attack(enemy);
-            }
+            player.Attack(dir);
+
+            // 적 움직임 & 공격
+            MoveEnemy(random);
         }
 
         public void UpdateStep()
@@ -86,21 +79,67 @@ namespace AdventureGame
             }
         }
 
+        public Item CreateItem(string itemName)
+        {
+            Item returnItem;
+            switch (itemName)
+            {
+                case "RedPotion":
+                    returnItem = new RedPotion(this,
+                                                        this.gameObjDB[itemName].GetInventoryPictureBox(),
+                                                        new Point(0, 0),
+                                                        this.gameObjDB[itemName].GetAbility(),
+                                                        itemName);
+                    break;
+                case "BluePotion":
+                    returnItem = new BluePotion(this,
+                                                        this.gameObjDB[itemName].GetInventoryPictureBox(),
+                                                        new Point(0, 0),
+                                                        this.gameObjDB[itemName].GetAbility(),
+                                                        itemName);
+                    break;
+                case "Sword":
+                    returnItem = new Weapon(this,
+                                              this.gameObjDB[itemName].GetInventoryPictureBox(),
+                                              new Point(0, 0),
+                                              this.gameObjDB[itemName].GetAbility(),
+                                              itemName);
+                    break;
+                case "Bow":
+                    returnItem = new Weapon(this,
+                                            this.gameObjDB[itemName].GetInventoryPictureBox(),
+                                            new Point(0, 0),
+                                            this.gameObjDB[itemName].GetAbility(),
+                                            itemName);
+                    break;
+                case "Maze":
+                    returnItem = new Weapon(this,
+                                             this.gameObjDB[itemName].GetInventoryPictureBox(),
+                                             new Point(0, 0),
+                                             this.gameObjDB[itemName].GetAbility(),
+                                             itemName);
+                    break;
+                default:
+                    return null;
+            }
+            return returnItem;
+        }
+
         public void GenerateItem()
         {
             // itemData에서 랜덤으로 1개 택하여 아이템 생성
             Weapon weapon = itemData[0] as Weapon;
-            Weapon newWeapon = new Weapon(weapon.PbIngameItem, weapon.PbInventoryItem, GetRandomPosition(), weapon.Power, weapon.Name);
+            Weapon newWeapon = new Weapon(this, weapon.PbIngameItem, weapon.PbInventoryItem, GetRandomPosition(), weapon.Power, weapon.Name);
             newWeapon.ActiveIngame(true);
             inGameItems.Add(newWeapon);
 
             weapon = itemData[1] as Weapon;
-            newWeapon = new Weapon(weapon.PbIngameItem, weapon.PbInventoryItem, GetRandomPosition(), weapon.Power, weapon.Name);
+            newWeapon = new Weapon(this, weapon.PbIngameItem, weapon.PbInventoryItem, GetRandomPosition(), weapon.Power, weapon.Name);
             newWeapon.ActiveIngame(true);
             inGameItems.Add(newWeapon);
 
             RedPotion redPotion = itemData[3] as RedPotion;
-            RedPotion newRedPotion = new RedPotion(redPotion.PbIngameItem, redPotion.PbInventoryItem, GetRandomPosition(), redPotion.Amount, redPotion.Name);
+            RedPotion newRedPotion = new RedPotion(this, redPotion.PbIngameItem, redPotion.PbInventoryItem, GetRandomPosition(), redPotion.Amount, redPotion.Name);
             newRedPotion.ActiveIngame(true);
             inGameItems.Add(newRedPotion);
         }

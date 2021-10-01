@@ -12,13 +12,13 @@ namespace AdventureGame
     {
         protected int amount;
 
-        public Potion(PictureBox pbIngame, PictureBox pbInventory, Point pose, int amount, string name)
-            : base(pbIngame, pbInventory, pose, name)
+        public Potion(Game game, PictureBox pictureBox, Point pose, int amount, string name)
+            : base(game, pictureBox, pose, name)
         {
             this.amount = amount;
         }
-        public Potion(PictureBox pbIngame, PictureBox pbInventory, int x, int y, int amount, string name)
-            : base(pbIngame, pbInventory, x, y, name)
+        public Potion(Game game, PictureBox pictureBox, int x, int y, int amount, string name)
+            : base(game, pictureBox, x, y, name)
         {
             this.amount = amount;
         }
@@ -30,29 +30,29 @@ namespace AdventureGame
 
     class RedPotion : Potion
     {
-        public RedPotion(PictureBox pbIngame, PictureBox pbInventory, Point pose, int amount, string name)
-            : base(pbIngame, pbInventory, pose, amount, name) { }
-        public RedPotion(PictureBox pbIngame, PictureBox pbInventory, int x, int y, int amount, string name)
-            : base(pbIngame, pbInventory, x, y, amount, name) { }
+        public RedPotion(Game game, PictureBox pictureBox, Point pose, int amount, string name)
+            : base(game, pictureBox, pose, amount, name) { }
+        public RedPotion(Game game, PictureBox pictureBox, int x, int y, int amount, string name)
+            : base(game, pictureBox, x, y, amount, name) { }
 
         public override void Use(GameUnit gameUnit)
         {
             gameUnit.HpChange(amount);
-            ActiveInventory(false);
+            ActivePicture(false);
         }
     }
 
     class BluePotion : Potion
     {
-        public BluePotion(PictureBox pbIngame, PictureBox pbInventory, Point pose, int amount, string name)
-            : base(pbIngame, pbInventory, pose, amount, name) { }
-        public BluePotion(PictureBox pbIngame, PictureBox pbInventory, int x, int y, int amount, string name)
-            : base(pbIngame, pbInventory, x, y, amount, name) { }
+        public BluePotion(Game game, PictureBox pictureBox, Point pose, int amount, string name)
+            : base(game, pictureBox, pose, amount, name) { }
+        public BluePotion(Game game, PictureBox pictureBox, int x, int y, int amount, string name)
+            : base(game, pictureBox, x, y, amount, name) { }
 
         public override void Use(GameUnit gameUnit)
         {
             gameUnit.MpChange(amount);
-            ActiveInventory(false);
+            ActivePicture(false);
         }
     }
 }

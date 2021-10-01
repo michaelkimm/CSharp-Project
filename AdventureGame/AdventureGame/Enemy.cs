@@ -11,14 +11,14 @@ namespace AdventureGame
     class Enemy : GameUnit
     {
 
-        public Enemy (PictureBox pictureBox, Label label, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
-            : base(pictureBox, label, pose, speed, initialHitPoint, initialMp, power, detectLength)
+        public Enemy (Game game, PictureBox pictureBox, Label label, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+            : base(game, pictureBox, label, pose, speed, initialHitPoint, initialMp, power, detectLength)
         {
 
         }
 
-        public Enemy(PictureBox pictureBox, Label label, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
-            : base(pictureBox, label, x, y, speed, initialHitPoint, initialMp, power, detectLength)
+        public Enemy(Game game, PictureBox pictureBox, Label label, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+            : base(game, pictureBox, label, x, y, speed, initialHitPoint, initialMp, power, detectLength)
         {
 
         }
@@ -69,16 +69,28 @@ namespace AdventureGame
             return result;
         }
 
-        public override void Attack(GameUnit gameUnit)
+        public void AttackPlayer()
         {
-            if (!(gameUnit is Player))
+            if (IsDead) return;
+
+            GameObject collidObj = CollisionWith(game.player);
+            if (collidObj == null)
                 return;
 
-            if (IsDead) return;
-            if (gameUnit.IsDead) return;
-
-            Player player = gameUnit as Player;
+            Player player = collidObj as Player;
             player.Attacked(power);
+        }
+
+        public override void Move(EnumClass.MoveDir dir)
+        {
+            base.Move(dir);
+
+            GameObject collideObj = CollisionWith(game.player);
+            if (collideObj == null)
+                return;
+
+            Player player = collideObj as Player;
+            AttackPlayer();
         }
     }
 }

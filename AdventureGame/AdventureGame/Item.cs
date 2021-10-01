@@ -8,48 +8,42 @@ using System.Windows.Forms;
 
 namespace AdventureGame
 {
-    abstract class Item
+    abstract class Item : GameObject
     {
-        protected PictureBox pbIngameItem;//  unitPictureBox;
-        protected PictureBox pbInventoryItem;
-        private Point pose;
+        protected PictureBox pictureBox;
+        // protected PictureBox pbIngameItem;//  unitPictureBox;
+        // protected PictureBox pbInventoryItem;
         string name;
 
-        public Item(PictureBox pbIngameItem, PictureBox pbInventoryItem, Point pose, string name)
+        public Item(Game game, PictureBox pictureBox, Point pose, string name)
+            : base(game)
         {
-            this.pbIngameItem = pbIngameItem;
-            this.pbInventoryItem = pbInventoryItem;
+            this.pictureBox = pictureBox;
             Pose = pose;
-            pbIngameItem.Visible = false;
+            pictureBox.Visible = false;
             this.name = name;
 
         }
-        public Item(PictureBox pbIngameItem, PictureBox pbInventoryItem, int x, int y, string name)
+        public Item(Game game, PictureBox pictureBox, int x, int y, string name)
+            : base(game)
         {
-            this.pbIngameItem = pbIngameItem;
-            this.pbInventoryItem = pbInventoryItem;
+            this.pictureBox = pictureBox;
             Pose = new Point(x, y);
-            pbIngameItem.Visible = false;
+            pictureBox.Visible = false;
             this.name = name;
         }
 
-        public void ActiveIngame(bool value)
+        public void ActivePicture(bool value)
         {
-            pbIngameItem.Visible = value;
-        }
-        public void ActiveInventory(bool value)
-        {
-            pbInventoryItem.Visible = value;
+            pictureBox.Visible = value;
         }
 
         public void UpdateVisibleInfo()
         {
-            pbIngameItem.Location = pose;
-            pbInventoryItem.Location = pose;
+            pictureBox.Location = pose;
         }
 
-        public PictureBox PbIngameItem { get { return pbIngameItem; } }
-        public PictureBox PbInventoryItem { get { return pbInventoryItem; } }
+        public PictureBox getPictureBox { get { return pictureBox; } }
         public string Name { get { return name; } }
 
         public Point Pose
@@ -61,8 +55,7 @@ namespace AdventureGame
             set 
             {
                 pose = value;
-                pbIngameItem.Location = pose;
-                pbInventoryItem.Location = pose;
+                pictureBox.Location = pose;
             }
         }
     }

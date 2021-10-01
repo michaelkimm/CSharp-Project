@@ -10,17 +10,17 @@ namespace AdventureGame
 {
     class Player : GameUnit
     {
-        Weapon equipments;
+        Weapon equipments = null;
         List<Item> inventory;
 
-        public Player(PictureBox pictureBox, Label label, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
-            : base(pictureBox, label, pose, speed, initialHitPoint, initialMp, power, detectLength)
+        public Player(Game game, PictureBox pictureBox, Label label, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+            : base(game, pictureBox, label, pose, speed, initialHitPoint, initialMp, power, detectLength)
         {
             inventory = new List<Item>();
         }
 
-        public Player(PictureBox pictureBox, Label label, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
-            : base(pictureBox, label, x, y, speed, initialHitPoint, initialMp, power, detectLength)
+        public Player(Game game, PictureBox pictureBox, Label label, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+            : base(game, pictureBox, label, x, y, speed, initialHitPoint, initialMp, power, detectLength)
         {
             inventory = new List<Item>();
         }
@@ -72,36 +72,54 @@ namespace AdventureGame
             return result;
         }
 
-        public override void Attack(GameUnit gameUnit)
+        public override void Attack(EnumClass.MoveDir dir)
         {
-            if (!(gameUnit is Enemy))
+            if (IsDead)
                 return;
 
-            if (IsDead) return;
-            if (gameUnit.IsDead) return;
+            if (equipments == null)
+            {
+                MessageBox.Show("Need Weapon!");
+                return;
+            }
 
             // 적을 무기로 공격한다
-            Enemy enemy = gameUnit as Enemy;
-            equipments.Attack(enemy, Power);
+            equipments.Attack(dir, this.Power);
         }
 
-        public Item FindCollision(List<Item> items)
+        public override void Move(EnumClass.MoveDir dir)
         {
-            for (int i = 0; i < items.Count; i++)
+            // 움직인 후
+            base.Move(dir);
+
+            // 플레이어는 아이템을 먹을 수 있다.
+            for (int i = 0; i < game.inGameItems.Count; i++)
             {
-                if ((items[i].Pose.X - this.Pose.X) * (items[i].Pose.X - this.Pose.X) + (items[i].Pose.Y - this.Pose.Y) * (items[i].Pose.Y - this.Pose.Y) <= 10 * 10)
-                    return items[i];
+                GameObject foundItem = CollisionWith(game.inGameItems[i]);
+                if (foundItem != null)
+                {
+                    Item item = foundItem as Item;
+                    MessageBox.Show("Found Item");
+                    GetItem(item);
+                    game.inGameItems.Remove(item);
+                }
             }
-            return null;
+            
+            
         }
 
-        public void GetItem(Item item)
+        public void GetItem(Item itemObj)
         {
             // 인게임 아이템 비활성화
-            item.ActiveIngame(false);
+            itemObj.ActivePicture(false);
 
-            item.ActiveInventory(true);
+            // 인벤토리에 넣을 아이템 생성
+            Item item = game.CreateItem(itemObj.Name);
+
+            // 인벤토리에 아이템 삽입
             inventory.Add(item);
+
+            // 인벤토리 위치 초기화
             RefreshInventory();
         }
         private void RefreshInventory()
@@ -127,12 +145,12 @@ namespace AdventureGame
                 if (equipments != null)
                 {
                     // 이전 장착된 것 해제
-                    equipments.PbInventoryItem.BorderStyle = BorderStyle.None;
+                    equipments.getPictureBox.BorderStyle = BorderStyle.None;
                 }
 
                 // 새로 장착
                 equipments = weapon;
-                equipments.PbInventoryItem.BorderStyle = BorderStyle.FixedSingle;
+                equipments.getPictureBox.BorderStyle = BorderStyle.FixedSingle;
                 break;
             }
         }

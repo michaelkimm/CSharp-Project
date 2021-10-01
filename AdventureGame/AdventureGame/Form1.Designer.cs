@@ -89,9 +89,10 @@ namespace AdventureGame
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(608, 12);
+            this.textBox1.Location = new System.Drawing.Point(955, 21);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 14);
+            this.textBox1.Size = new System.Drawing.Size(157, 25);
             this.textBox1.TabIndex = 8;
             this.textBox1.Text = "Move";
             // 
@@ -99,17 +100,19 @@ namespace AdventureGame
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Location = new System.Drawing.Point(608, 130);
+            this.textBox2.Location = new System.Drawing.Point(955, 228);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(5);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(43, 14);
+            this.textBox2.Size = new System.Drawing.Size(68, 25);
             this.textBox2.TabIndex = 9;
             this.textBox2.Text = "Attack";
             // 
             // btnMoveRight
             // 
-            this.btnMoveRight.Location = new System.Drawing.Point(689, 61);
+            this.btnMoveRight.Location = new System.Drawing.Point(1083, 107);
+            this.btnMoveRight.Margin = new System.Windows.Forms.Padding(5);
             this.btnMoveRight.Name = "btnMoveRight";
-            this.btnMoveRight.Size = new System.Drawing.Size(75, 23);
+            this.btnMoveRight.Size = new System.Drawing.Size(118, 40);
             this.btnMoveRight.TabIndex = 11;
             this.btnMoveRight.Text = "Right";
             this.btnMoveRight.UseVisualStyleBackColor = true;
@@ -117,9 +120,10 @@ namespace AdventureGame
             // 
             // btnMoveLeft
             // 
-            this.btnMoveLeft.Location = new System.Drawing.Point(608, 61);
+            this.btnMoveLeft.Location = new System.Drawing.Point(955, 107);
+            this.btnMoveLeft.Margin = new System.Windows.Forms.Padding(5);
             this.btnMoveLeft.Name = "btnMoveLeft";
-            this.btnMoveLeft.Size = new System.Drawing.Size(75, 23);
+            this.btnMoveLeft.Size = new System.Drawing.Size(118, 40);
             this.btnMoveLeft.TabIndex = 12;
             this.btnMoveLeft.Text = "Left";
             this.btnMoveLeft.UseVisualStyleBackColor = true;
@@ -127,9 +131,10 @@ namespace AdventureGame
             // 
             // btnMoveDown
             // 
-            this.btnMoveDown.Location = new System.Drawing.Point(647, 90);
+            this.btnMoveDown.Location = new System.Drawing.Point(1017, 158);
+            this.btnMoveDown.Margin = new System.Windows.Forms.Padding(5);
             this.btnMoveDown.Name = "btnMoveDown";
-            this.btnMoveDown.Size = new System.Drawing.Size(75, 23);
+            this.btnMoveDown.Size = new System.Drawing.Size(118, 40);
             this.btnMoveDown.TabIndex = 13;
             this.btnMoveDown.Text = "Down";
             this.btnMoveDown.UseVisualStyleBackColor = true;
@@ -137,9 +142,10 @@ namespace AdventureGame
             // 
             // btnAtkDown
             // 
-            this.btnAtkDown.Location = new System.Drawing.Point(647, 210);
+            this.btnAtkDown.Location = new System.Drawing.Point(1017, 368);
+            this.btnAtkDown.Margin = new System.Windows.Forms.Padding(5);
             this.btnAtkDown.Name = "btnAtkDown";
-            this.btnAtkDown.Size = new System.Drawing.Size(75, 23);
+            this.btnAtkDown.Size = new System.Drawing.Size(118, 40);
             this.btnAtkDown.TabIndex = 17;
             this.btnAtkDown.Text = "Down";
             this.btnAtkDown.UseVisualStyleBackColor = true;
@@ -147,9 +153,10 @@ namespace AdventureGame
             // 
             // btnAtkRight
             // 
-            this.btnAtkRight.Location = new System.Drawing.Point(689, 181);
+            this.btnAtkRight.Location = new System.Drawing.Point(1083, 317);
+            this.btnAtkRight.Margin = new System.Windows.Forms.Padding(5);
             this.btnAtkRight.Name = "btnAtkRight";
-            this.btnAtkRight.Size = new System.Drawing.Size(75, 23);
+            this.btnAtkRight.Size = new System.Drawing.Size(118, 40);
             this.btnAtkRight.TabIndex = 16;
             this.btnAtkRight.Text = "Right";
             this.btnAtkRight.UseVisualStyleBackColor = true;
@@ -157,9 +164,10 @@ namespace AdventureGame
             // 
             // btnAtkLeft
             // 
-            this.btnAtkLeft.Location = new System.Drawing.Point(608, 181);
+            this.btnAtkLeft.Location = new System.Drawing.Point(955, 317);
+            this.btnAtkLeft.Margin = new System.Windows.Forms.Padding(5);
             this.btnAtkLeft.Name = "btnAtkLeft";
-            this.btnAtkLeft.Size = new System.Drawing.Size(75, 23);
+            this.btnAtkLeft.Size = new System.Drawing.Size(118, 40);
             this.btnAtkLeft.TabIndex = 15;
             this.btnAtkLeft.Text = "Left";
             this.btnAtkLeft.UseVisualStyleBackColor = true;
@@ -167,9 +175,10 @@ namespace AdventureGame
             // 
             // btnAtkUp
             // 
-            this.btnAtkUp.Location = new System.Drawing.Point(647, 152);
+            this.btnAtkUp.Location = new System.Drawing.Point(1017, 266);
+            this.btnAtkUp.Margin = new System.Windows.Forms.Padding(5);
             this.btnAtkUp.Name = "btnAtkUp";
-            this.btnAtkUp.Size = new System.Drawing.Size(75, 23);
+            this.btnAtkUp.Size = new System.Drawing.Size(118, 40);
             this.btnAtkUp.TabIndex = 14;
             this.btnAtkUp.Text = "Up";
             this.btnAtkUp.UseVisualStyleBackColor = true;
@@ -180,7 +189,7 @@ namespace AdventureGame
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 111F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 174F));
             this.tableLayoutPanel1.Controls.Add(this.lbGhoul, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.lbGhost, 2, 2);
@@ -193,58 +202,64 @@ namespace AdventureGame
             this.tableLayoutPanel1.Controls.Add(this.textBox7, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.lbPlayer, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.lbBat, 2, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(608, 272);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(955, 476);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(164, 100);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(258, 175);
             this.tableLayoutPanel1.TabIndex = 19;
             // 
             // lbGhoul
             // 
             this.lbGhoul.AutoSize = true;
-            this.lbGhoul.Location = new System.Drawing.Point(56, 75);
+            this.lbGhoul.Location = new System.Drawing.Point(89, 129);
+            this.lbGhoul.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lbGhoul.Name = "lbGhoul";
-            this.lbGhoul.Size = new System.Drawing.Size(78, 12);
+            this.lbGhoul.Size = new System.Drawing.Size(117, 21);
             this.lbGhoul.TabIndex = 32;
             this.lbGhoul.Text = "ghoulHitPoint";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 75);
+            this.label3.Location = new System.Drawing.Point(5, 129);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(1, 12);
+            this.label3.Size = new System.Drawing.Size(1, 21);
             this.label3.TabIndex = 31;
             this.label3.Text = "label1";
             // 
             // lbGhost
             // 
             this.lbGhost.AutoSize = true;
-            this.lbGhost.Location = new System.Drawing.Point(56, 50);
+            this.lbGhost.Location = new System.Drawing.Point(89, 86);
+            this.lbGhost.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lbGhost.Name = "lbGhost";
-            this.lbGhost.Size = new System.Drawing.Size(78, 12);
+            this.lbGhost.Size = new System.Drawing.Size(120, 21);
             this.lbGhost.TabIndex = 30;
             this.lbGhost.Text = "ghostHitPoint";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 50);
+            this.label2.Location = new System.Drawing.Point(5, 86);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1, 12);
+            this.label2.Size = new System.Drawing.Size(1, 21);
             this.label2.TabIndex = 29;
             this.label2.Text = "label1";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 25);
+            this.label1.Location = new System.Drawing.Point(5, 43);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1, 12);
+            this.label1.Size = new System.Drawing.Size(1, 21);
             this.label1.TabIndex = 27;
             this.label1.Text = "label1";
             // 
@@ -252,9 +267,10 @@ namespace AdventureGame
             // 
             this.textBox5.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Location = new System.Drawing.Point(7, 3);
+            this.textBox5.Location = new System.Drawing.Point(11, 5);
+            this.textBox5.Margin = new System.Windows.Forms.Padding(5);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(43, 14);
+            this.textBox5.Size = new System.Drawing.Size(68, 25);
             this.textBox5.TabIndex = 25;
             this.textBox5.Text = "Player";
             // 
@@ -262,9 +278,10 @@ namespace AdventureGame
             // 
             this.textBox3.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Location = new System.Drawing.Point(3, 3);
+            this.textBox3.Location = new System.Drawing.Point(5, 5);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(5);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(1, 14);
+            this.textBox3.Size = new System.Drawing.Size(1, 25);
             this.textBox3.TabIndex = 20;
             this.textBox3.Text = "Attack";
             // 
@@ -272,9 +289,10 @@ namespace AdventureGame
             // 
             this.textBox4.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Location = new System.Drawing.Point(7, 28);
+            this.textBox4.Location = new System.Drawing.Point(11, 48);
+            this.textBox4.Margin = new System.Windows.Forms.Padding(5);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(43, 14);
+            this.textBox4.Size = new System.Drawing.Size(68, 25);
             this.textBox4.TabIndex = 21;
             this.textBox4.Text = "Bat";
             // 
@@ -282,9 +300,10 @@ namespace AdventureGame
             // 
             this.textBox6.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Location = new System.Drawing.Point(7, 53);
+            this.textBox6.Location = new System.Drawing.Point(11, 91);
+            this.textBox6.Margin = new System.Windows.Forms.Padding(5);
             this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(43, 14);
+            this.textBox6.Size = new System.Drawing.Size(68, 25);
             this.textBox6.TabIndex = 23;
             this.textBox6.Text = "Ghost";
             // 
@@ -292,18 +311,20 @@ namespace AdventureGame
             // 
             this.textBox7.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox7.Location = new System.Drawing.Point(7, 78);
+            this.textBox7.Location = new System.Drawing.Point(11, 134);
+            this.textBox7.Margin = new System.Windows.Forms.Padding(5);
             this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(43, 14);
+            this.textBox7.Size = new System.Drawing.Size(68, 25);
             this.textBox7.TabIndex = 24;
             this.textBox7.Text = "Ghoul";
             // 
             // lbPlayer
             // 
             this.lbPlayer.AutoSize = true;
-            this.lbPlayer.Location = new System.Drawing.Point(56, 0);
+            this.lbPlayer.Location = new System.Drawing.Point(89, 0);
+            this.lbPlayer.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lbPlayer.Name = "lbPlayer";
-            this.lbPlayer.Size = new System.Drawing.Size(82, 12);
+            this.lbPlayer.Size = new System.Drawing.Size(123, 21);
             this.lbPlayer.TabIndex = 26;
             this.lbPlayer.Text = "playerHitPoint";
             this.lbPlayer.Click += new System.EventHandler(this.lbPlayer_Click);
@@ -311,9 +332,10 @@ namespace AdventureGame
             // lbBat
             // 
             this.lbBat.AutoSize = true;
-            this.lbBat.Location = new System.Drawing.Point(56, 25);
+            this.lbBat.Location = new System.Drawing.Point(89, 43);
+            this.lbBat.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lbBat.Name = "lbBat";
-            this.lbBat.Size = new System.Drawing.Size(64, 12);
+            this.lbBat.Size = new System.Drawing.Size(99, 21);
             this.lbBat.TabIndex = 28;
             this.lbBat.Text = "batHitPoint";
             // 
@@ -321,9 +343,10 @@ namespace AdventureGame
             // 
             this.pbSwordEquipped.BackColor = System.Drawing.Color.Transparent;
             this.pbSwordEquipped.Image = global::AdventureGame.Properties.Resources.sword;
-            this.pbSwordEquipped.Location = new System.Drawing.Point(80, 322);
+            this.pbSwordEquipped.Location = new System.Drawing.Point(126, 564);
+            this.pbSwordEquipped.Margin = new System.Windows.Forms.Padding(5);
             this.pbSwordEquipped.Name = "pbSwordEquipped";
-            this.pbSwordEquipped.Size = new System.Drawing.Size(50, 50);
+            this.pbSwordEquipped.Size = new System.Drawing.Size(79, 88);
             this.pbSwordEquipped.TabIndex = 20;
             this.pbSwordEquipped.TabStop = false;
             this.pbSwordEquipped.Visible = false;
@@ -333,9 +356,10 @@ namespace AdventureGame
             // 
             this.pbPotionRedEquipped.BackColor = System.Drawing.Color.Transparent;
             this.pbPotionRedEquipped.Image = global::AdventureGame.Properties.Resources.potion_red;
-            this.pbPotionRedEquipped.Location = new System.Drawing.Point(136, 322);
+            this.pbPotionRedEquipped.Location = new System.Drawing.Point(214, 564);
+            this.pbPotionRedEquipped.Margin = new System.Windows.Forms.Padding(5);
             this.pbPotionRedEquipped.Name = "pbPotionRedEquipped";
-            this.pbPotionRedEquipped.Size = new System.Drawing.Size(50, 50);
+            this.pbPotionRedEquipped.Size = new System.Drawing.Size(79, 88);
             this.pbPotionRedEquipped.TabIndex = 21;
             this.pbPotionRedEquipped.TabStop = false;
             this.pbPotionRedEquipped.Visible = false;
@@ -345,9 +369,10 @@ namespace AdventureGame
             // 
             this.pbPotionBlueEquipped.BackColor = System.Drawing.Color.Transparent;
             this.pbPotionBlueEquipped.Image = global::AdventureGame.Properties.Resources.potion_blue;
-            this.pbPotionBlueEquipped.Location = new System.Drawing.Point(192, 322);
+            this.pbPotionBlueEquipped.Location = new System.Drawing.Point(302, 564);
+            this.pbPotionBlueEquipped.Margin = new System.Windows.Forms.Padding(5);
             this.pbPotionBlueEquipped.Name = "pbPotionBlueEquipped";
-            this.pbPotionBlueEquipped.Size = new System.Drawing.Size(50, 50);
+            this.pbPotionBlueEquipped.Size = new System.Drawing.Size(79, 88);
             this.pbPotionBlueEquipped.TabIndex = 22;
             this.pbPotionBlueEquipped.TabStop = false;
             this.pbPotionBlueEquipped.Visible = false;
@@ -357,9 +382,10 @@ namespace AdventureGame
             // 
             this.pbBowEquipped.BackColor = System.Drawing.Color.Transparent;
             this.pbBowEquipped.Image = global::AdventureGame.Properties.Resources.bow;
-            this.pbBowEquipped.Location = new System.Drawing.Point(248, 322);
+            this.pbBowEquipped.Location = new System.Drawing.Point(390, 564);
+            this.pbBowEquipped.Margin = new System.Windows.Forms.Padding(5);
             this.pbBowEquipped.Name = "pbBowEquipped";
-            this.pbBowEquipped.Size = new System.Drawing.Size(50, 50);
+            this.pbBowEquipped.Size = new System.Drawing.Size(79, 88);
             this.pbBowEquipped.TabIndex = 23;
             this.pbBowEquipped.TabStop = false;
             this.pbBowEquipped.Visible = false;
@@ -369,9 +395,10 @@ namespace AdventureGame
             // 
             this.pbMaceEquipped.BackColor = System.Drawing.Color.Transparent;
             this.pbMaceEquipped.Image = global::AdventureGame.Properties.Resources.mace;
-            this.pbMaceEquipped.Location = new System.Drawing.Point(304, 322);
+            this.pbMaceEquipped.Location = new System.Drawing.Point(478, 564);
+            this.pbMaceEquipped.Margin = new System.Windows.Forms.Padding(5);
             this.pbMaceEquipped.Name = "pbMaceEquipped";
-            this.pbMaceEquipped.Size = new System.Drawing.Size(50, 50);
+            this.pbMaceEquipped.Size = new System.Drawing.Size(79, 88);
             this.pbMaceEquipped.TabIndex = 24;
             this.pbMaceEquipped.TabStop = false;
             this.pbMaceEquipped.Visible = false;
@@ -382,20 +409,23 @@ namespace AdventureGame
             this.pbPlayer.BackColor = System.Drawing.Color.Transparent;
             this.pbPlayer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbPlayer.Image = global::AdventureGame.Properties.Resources.player30;
-            this.pbPlayer.Location = new System.Drawing.Point(96, 63);
+            this.pbPlayer.Location = new System.Drawing.Point(151, 110);
+            this.pbPlayer.Margin = new System.Windows.Forms.Padding(5);
             this.pbPlayer.Name = "pbPlayer";
-            this.pbPlayer.Size = new System.Drawing.Size(30, 30);
+            this.pbPlayer.Size = new System.Drawing.Size(47, 52);
             this.pbPlayer.TabIndex = 25;
             this.pbPlayer.TabStop = false;
+            this.pbPlayer.Click += new System.EventHandler(this.pbPlayer_Click);
             // 
             // pbSwordItem
             // 
             this.pbSwordItem.BackColor = System.Drawing.Color.Transparent;
             this.pbSwordItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbSwordItem.Image = global::AdventureGame.Properties.Resources.sword30;
-            this.pbSwordItem.Location = new System.Drawing.Point(132, 63);
+            this.pbSwordItem.Location = new System.Drawing.Point(207, 110);
+            this.pbSwordItem.Margin = new System.Windows.Forms.Padding(5);
             this.pbSwordItem.Name = "pbSwordItem";
-            this.pbSwordItem.Size = new System.Drawing.Size(30, 30);
+            this.pbSwordItem.Size = new System.Drawing.Size(47, 52);
             this.pbSwordItem.TabIndex = 26;
             this.pbSwordItem.TabStop = false;
             // 
@@ -404,20 +434,23 @@ namespace AdventureGame
             this.pbBat.BackColor = System.Drawing.Color.Transparent;
             this.pbBat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbBat.Image = global::AdventureGame.Properties.Resources.bat30;
-            this.pbBat.Location = new System.Drawing.Point(168, 63);
+            this.pbBat.Location = new System.Drawing.Point(264, 110);
+            this.pbBat.Margin = new System.Windows.Forms.Padding(5);
             this.pbBat.Name = "pbBat";
-            this.pbBat.Size = new System.Drawing.Size(30, 30);
+            this.pbBat.Size = new System.Drawing.Size(47, 52);
             this.pbBat.TabIndex = 27;
             this.pbBat.TabStop = false;
+            this.pbBat.Click += new System.EventHandler(this.pbBat_Click);
             // 
             // pbGhoul
             // 
             this.pbGhoul.BackColor = System.Drawing.Color.Transparent;
             this.pbGhoul.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbGhoul.Image = global::AdventureGame.Properties.Resources.ghoul30;
-            this.pbGhoul.Location = new System.Drawing.Point(204, 63);
+            this.pbGhoul.Location = new System.Drawing.Point(321, 110);
+            this.pbGhoul.Margin = new System.Windows.Forms.Padding(5);
             this.pbGhoul.Name = "pbGhoul";
-            this.pbGhoul.Size = new System.Drawing.Size(30, 30);
+            this.pbGhoul.Size = new System.Drawing.Size(47, 52);
             this.pbGhoul.TabIndex = 28;
             this.pbGhoul.TabStop = false;
             // 
@@ -426,9 +459,10 @@ namespace AdventureGame
             this.pbGhost.BackColor = System.Drawing.Color.Transparent;
             this.pbGhost.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbGhost.Image = global::AdventureGame.Properties.Resources.ghost30;
-            this.pbGhost.Location = new System.Drawing.Point(240, 63);
+            this.pbGhost.Location = new System.Drawing.Point(377, 110);
+            this.pbGhost.Margin = new System.Windows.Forms.Padding(5);
             this.pbGhost.Name = "pbGhost";
-            this.pbGhost.Size = new System.Drawing.Size(30, 30);
+            this.pbGhost.Size = new System.Drawing.Size(47, 52);
             this.pbGhost.TabIndex = 29;
             this.pbGhost.TabStop = false;
             // 
@@ -437,9 +471,10 @@ namespace AdventureGame
             this.pbBowItem.BackColor = System.Drawing.Color.Transparent;
             this.pbBowItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbBowItem.Image = global::AdventureGame.Properties.Resources.bow30;
-            this.pbBowItem.Location = new System.Drawing.Point(276, 63);
+            this.pbBowItem.Location = new System.Drawing.Point(434, 110);
+            this.pbBowItem.Margin = new System.Windows.Forms.Padding(5);
             this.pbBowItem.Name = "pbBowItem";
-            this.pbBowItem.Size = new System.Drawing.Size(30, 30);
+            this.pbBowItem.Size = new System.Drawing.Size(47, 52);
             this.pbBowItem.TabIndex = 30;
             this.pbBowItem.TabStop = false;
             // 
@@ -448,9 +483,10 @@ namespace AdventureGame
             this.pbPotionRedItem.BackColor = System.Drawing.Color.Transparent;
             this.pbPotionRedItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbPotionRedItem.Image = global::AdventureGame.Properties.Resources.potion_red30;
-            this.pbPotionRedItem.Location = new System.Drawing.Point(312, 63);
+            this.pbPotionRedItem.Location = new System.Drawing.Point(490, 110);
+            this.pbPotionRedItem.Margin = new System.Windows.Forms.Padding(5);
             this.pbPotionRedItem.Name = "pbPotionRedItem";
-            this.pbPotionRedItem.Size = new System.Drawing.Size(30, 30);
+            this.pbPotionRedItem.Size = new System.Drawing.Size(47, 52);
             this.pbPotionRedItem.TabIndex = 31;
             this.pbPotionRedItem.TabStop = false;
             // 
@@ -459,9 +495,10 @@ namespace AdventureGame
             this.pbPotionBlueItem.BackColor = System.Drawing.Color.Transparent;
             this.pbPotionBlueItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbPotionBlueItem.Image = global::AdventureGame.Properties.Resources.potion_blue30;
-            this.pbPotionBlueItem.Location = new System.Drawing.Point(348, 63);
+            this.pbPotionBlueItem.Location = new System.Drawing.Point(547, 110);
+            this.pbPotionBlueItem.Margin = new System.Windows.Forms.Padding(5);
             this.pbPotionBlueItem.Name = "pbPotionBlueItem";
-            this.pbPotionBlueItem.Size = new System.Drawing.Size(30, 30);
+            this.pbPotionBlueItem.Size = new System.Drawing.Size(47, 52);
             this.pbPotionBlueItem.TabIndex = 32;
             this.pbPotionBlueItem.TabStop = false;
             // 
@@ -470,17 +507,19 @@ namespace AdventureGame
             this.pbMazeItem.BackColor = System.Drawing.Color.Transparent;
             this.pbMazeItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pbMazeItem.Image = global::AdventureGame.Properties.Resources.mace30;
-            this.pbMazeItem.Location = new System.Drawing.Point(384, 63);
+            this.pbMazeItem.Location = new System.Drawing.Point(603, 110);
+            this.pbMazeItem.Margin = new System.Windows.Forms.Padding(5);
             this.pbMazeItem.Name = "pbMazeItem";
-            this.pbMazeItem.Size = new System.Drawing.Size(30, 30);
+            this.pbMazeItem.Size = new System.Drawing.Size(47, 52);
             this.pbMazeItem.TabIndex = 33;
             this.pbMazeItem.TabStop = false;
             // 
             // btnMoveUp
             // 
-            this.btnMoveUp.Location = new System.Drawing.Point(647, 32);
+            this.btnMoveUp.Location = new System.Drawing.Point(1017, 56);
+            this.btnMoveUp.Margin = new System.Windows.Forms.Padding(5);
             this.btnMoveUp.Name = "btnMoveUp";
-            this.btnMoveUp.Size = new System.Drawing.Size(75, 23);
+            this.btnMoveUp.Size = new System.Drawing.Size(118, 40);
             this.btnMoveUp.TabIndex = 34;
             this.btnMoveUp.Text = "Up";
             this.btnMoveUp.UseVisualStyleBackColor = true;
@@ -488,9 +527,10 @@ namespace AdventureGame
             // 
             // btnItemGenerator
             // 
-            this.btnItemGenerator.Location = new System.Drawing.Point(647, 239);
+            this.btnItemGenerator.Location = new System.Drawing.Point(1017, 418);
+            this.btnItemGenerator.Margin = new System.Windows.Forms.Padding(5);
             this.btnItemGenerator.Name = "btnItemGenerator";
-            this.btnItemGenerator.Size = new System.Drawing.Size(75, 23);
+            this.btnItemGenerator.Size = new System.Drawing.Size(118, 40);
             this.btnItemGenerator.TabIndex = 35;
             this.btnItemGenerator.Text = "Item";
             this.btnItemGenerator.UseVisualStyleBackColor = true;
@@ -498,12 +538,12 @@ namespace AdventureGame
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(784, 399);
+            this.ClientSize = new System.Drawing.Size(1232, 698);
             this.Controls.Add(this.btnItemGenerator);
             this.Controls.Add(this.btnMoveUp);
             this.Controls.Add(this.pbMazeItem);
@@ -530,6 +570,7 @@ namespace AdventureGame
             this.Controls.Add(this.btnMoveRight);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Form1";
             this.Text = "Form1";
             this.tableLayoutPanel1.ResumeLayout(false);
