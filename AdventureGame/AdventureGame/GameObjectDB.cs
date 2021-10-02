@@ -7,16 +7,14 @@ using System.Windows.Forms;
 
 namespace AdventureGame
 {
-    class GameObjectDB
+    class GameObjectUIDB
     {
-        string name;
         PictureBox pbIngame;
         PictureBox pbInventory;
         Label lbUI;
 
-        public GameObjectDB(string name, PictureBox pbIngame, PictureBox pbInventory = null, Label lbUI = null)
+        public GameObjectUIDB(PictureBox pbIngame, PictureBox pbInventory = null, Label lbUI = null)
         {
-            this.name = name;
             this.pbIngame = pbIngame;
             this.pbInventory = pbInventory;
             this.lbUI = lbUI;
@@ -35,11 +33,6 @@ namespace AdventureGame
         public Label GetLabel()
         {
             return lbUI;
-        }
-
-        public string Name
-        {
-            get { return name; }
         }
     }
 }

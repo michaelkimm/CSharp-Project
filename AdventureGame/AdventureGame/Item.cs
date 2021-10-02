@@ -13,24 +13,21 @@ namespace AdventureGame
         protected PictureBox pictureBox;
         // protected PictureBox pbIngameItem;//  unitPictureBox;
         // protected PictureBox pbInventoryItem;
-        string name;
 
-        public Item(Game game, PictureBox pictureBox, Point pose, string name)
+        public Item(Game game, PictureBox pictureBox, Point pose)
             : base(game)
         {
             this.pictureBox = pictureBox;
             Pose = pose;
             pictureBox.Visible = false;
-            this.name = name;
 
         }
-        public Item(Game game, PictureBox pictureBox, int x, int y, string name)
+        public Item(Game game, PictureBox pictureBox, int x, int y)
             : base(game)
         {
             this.pictureBox = pictureBox;
             Pose = new Point(x, y);
             pictureBox.Visible = false;
-            this.name = name;
         }
 
         public void ActivePicture(bool value)
@@ -44,8 +41,6 @@ namespace AdventureGame
         }
 
         public PictureBox getPictureBox { get { return pictureBox; } }
-        public string Name { get { return name; } }
-
         public Point Pose
         { 
             get 

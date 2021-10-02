@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 
+
 namespace AdventureGame
 {
+    public enum WeaponType { Sword, Bow, Maze };
+    public enum EnemyType { Bat, Ghost, Ghoul };
+
+    public enum UsableItemType { RedPotion, BluePotion };
+
     struct Map
     {
         Rectangle boundary;
@@ -51,30 +57,59 @@ namespace AdventureGame
 
     }
 
-    struct ItemInfo
+    struct WeaponInfo
     {
+        int power;
+        int attackRange;
+
+        public WeaponInfo(int power, int attackRange)
+        {
+            this.power = power;
+            this.attackRange = attackRange;
+        }
+
+        public int Power { get { return power; } }
+        public int AttackRange { get { return attackRange; } }
+    }
+
+    struct UsableItemInfo
+    {
+        int value;
+        
+        public UsableItemInfo(int value)
+        {
+            this.value = value;
+        }
+
+        public int Value { get { return value; } }
     }
 
     class Game
     {
-        Player player;
+        public Player player;
         public List<Enemy> enemies;
+        public Dictionary<EnemyType, PlayerCharacterInfo> EnemyDB;
         List<Item> itemData;
-        public Dictionary<string, GameObjectDB> gameObjDB;
+        public Dictionary<string, GameObjectUIDB> GameObjDB;
+        public Dictionary<WeaponType, WeaponInfo> WeaponDB;
+        public Dictionary<UsableItemType, UsableItemInfo> UsableItemDB;
         public List<Item> inGameItems;
 
         Map map;
         Random randomMaker;
 
-        public Game(Dictionary<string, GameObjectDB> gameObjDB, List<Item> itemdata, Map map) //, Enemy[] enemys, Item[] items)
+        public Game(Dictionary<string, GameObjectUIDB> gameObjDB, Map map) //, Enemy[] enemys, Item[] items)
         {
-            this.gameObjDB = gameObjDB;
-            this.itemData = itemdata;
+            this.GameObjDB = gameObjDB;
             this.map = map;
             inGameItems = new List<Item>();
             randomMaker = new Random();
 
+            LoadEnemyInfoDB();
+            LoadItemInfoDB();
+
             InitializePlayer();
+            InitializeItem();
         }
 
         void InitializePlayer()
@@ -84,44 +119,92 @@ namespace AdventureGame
             int playerMP = 10;
             int playerPower = 1;
             int playerDetectLength = 30;
+            string playerName = "Player";
             PlayerCharacterInfo playerInfo = new PlayerCharacterInfo(playerSpeed, playerHP, playerMP, playerPower, playerDetectLength);
 
             player = new Player(this,
-                                gameObjDB["Player"].Name,
-                                gameObjDB["Player"].GetIngamePictureBox(),
-                                gameObjDB["Player"].GetLabel(), 
+                                playerName,
+                                GameObjDB["Player"].GetIngamePictureBox(),
+                                GameObjDB["Player"].GetLabel(), 
                                 map.Start,
                                 playerInfo);
         }
 
-        void InitializeEnemy()
+        void LoadEnemyInfoDB()
         {
             int batSpeed = 5;
-            int batHP = 20;
+            int batHP = 10;
             int batMP = 10;
             int batPower = 1;
             int batDetectLength = 30;
+            Point batPosition = new Point(168, 63);
             PlayerCharacterInfo batInfo = new PlayerCharacterInfo(batSpeed, batHP, batMP, batPower, batDetectLength);
 
-            int ghostSpeed = 5;
-            int ghostHP = 20;
+            int ghostSpeed = 10;
+            int ghostHP = 15;
             int ghostMP = 10;
-            int ghostPower = 1;
+            int ghostPower = 3;
             int ghostDetectLength = 30;
+            Point ghostPosition = new Point(168, 63);
             PlayerCharacterInfo ghostInfo = new PlayerCharacterInfo(ghostSpeed, ghostHP, ghostMP, ghostPower, ghostDetectLength);
 
-            int ghoulSpeed = 5;
-            int ghoulHP = 20;
+            int ghoulSpeed = 20;
+            int ghoulHP = 7;
             int ghoulMP = 10;
-            int ghoulPower = 1;
+            int ghoulPower = 5;
             int ghoulDetectLength = 30;
+            Point ghoulPosition = new Point(168, 63);
             PlayerCharacterInfo ghoulInfo = new PlayerCharacterInfo(ghoulSpeed, ghoulHP, ghoulMP, ghoulPower, ghoulDetectLength);
 
 
+            EnemyDB.Add(EnemyType.Bat, batInfo);
+            EnemyDB.Add(EnemyType.Ghost, ghostInfo);
+            EnemyDB.Add(EnemyType.Ghoul, ghoulInfo);
 
-            enemies.Add(new Enemy(this, gameObjDB["Bat"].Name, gameObjDB["Bat"].GetIngamePictureBox(), gameObjDB["Bat"].GetLabel(), 168, 63, enemySpeed, enemyHitPoint, enemyMp, enemyPower, enemyDetectLength));
-            enemies.Add(new Enemy(this, gameObjDB["Ghost"].Name, gameObjDB["Ghost"].GetIngamePictureBox(), gameObjDB["Ghost"].GetLabel(), 204, 63, enemySpeed, enemyHitPoint, enemyMp, enemyPower, enemyDetectLength));
-            enemies.Add(new Enemy(this, gameObjDB["Ghoul"].Name, gameObjDB["Ghoul"].GetIngamePictureBox(), gameObjDB["Ghoul"].GetLabel(), 240, 63, enemySpeed, enemyHitPoint, enemyMp, enemyPower, enemyDetectLength));
+            // enemies.Add(new Enemy(this, GameObjDB["Bat"].b, GameObjDB["Bat"].GetIngamePictureBox(), GameObjDB["Bat"].GetLabel(), batPosition, batInfo));
+            // enemies.Add(new Enemy(this, GameObjDB["Ghost"].Name, GameObjDB["Ghost"].GetIngamePictureBox(), GameObjDB["Ghost"].GetLabel(), ghostPosition, ghostInfo));
+            // enemies.Add(new Enemy(this, GameObjDB["Ghoul"].Name, GameObjDB["Ghoul"].GetIngamePictureBox(), GameObjDB["Ghoul"].GetLabel(), ghoulPosition, ghoulInfo));
+        }
+
+        void LoadItemInfoDB()
+        {
+            // 무기 데이터 업로드
+            int swordPower = 1;
+            int swordAttackRange = 5;
+            WeaponInfo swordInfo = new WeaponInfo(swordPower, swordAttackRange);
+
+            int bowPower = 2;
+            int bowAttackRange = 10;
+            WeaponInfo bowInfo = new WeaponInfo(bowPower, bowAttackRange);
+
+            int mazePower = 3;
+            int mazeAttackRange = 3;
+            WeaponInfo mazeInfo = new WeaponInfo(mazePower, mazeAttackRange);
+
+            WeaponDB.Add(WeaponType.Sword, swordInfo);
+            WeaponDB.Add(WeaponType.Bow, bowInfo);
+            WeaponDB.Add(WeaponType.Maze, mazeInfo);
+
+
+
+            // 소비 가능한 아이템 데이터 업로드
+            int hpPlus = 5;
+            UsableItemInfo redPotionInfo = new UsableItemInfo(hpPlus);
+
+            int mpPlus = 5;
+            UsableItemInfo bluePotionInfo = new UsableItemInfo(mpPlus);
+
+            UsableItemDB.Add(UsableItemType.RedPotion, redPotionInfo);
+            UsableItemDB.Add(UsableItemType.BluePotion, bluePotionInfo);
+        }
+
+        void InitializeItem()
+        {
+            itemData.Add(new Weapon(this, GameObjDB["Sword"].GetIngamePictureBox(), 0, 0, WeaponDB[WeaponType.Sword]));
+            itemData.Add(new Weapon(this, GameObjDB["Bow"].GetIngamePictureBox(), 0, 0, WeaponDB[WeaponType.Bow]));
+            itemData.Add(new Weapon(this, GameObjDB["Maze"].GetIngamePictureBox(), 0, 0, WeaponDB[WeaponType.Maze]));
+            itemData.Add(new RedPotion(this, GameObjDB["RedPotion"].GetIngamePictureBox(), 0, 0, UsableItemDB[UsableItemType.RedPotion]));
+            itemData.Add(new BluePotion(this, GameObjDB["BluePotion"].GetIngamePictureBox(), 0, 0, UsableItemDB[UsableItemType.BluePotion]));
         }
 
         public void Move(EnumClass.MoveDir dir, Random random)
@@ -172,45 +255,47 @@ namespace AdventureGame
             }
         }
 
-        public Item CreateItem(string itemName)
+        public Item CreateItem(string itemName, bool isIngame)
         {
             Item returnItem;
+
+            PictureBox pictureBox = null;
+            if (isIngame)
+                pictureBox = this.GameObjDB[itemName].GetIngamePictureBox();
+            else
+                pictureBox = this.GameObjDB[itemName].GetInventoryPictureBox();
+
             switch (itemName)
             {
                 case "RedPotion":
                     returnItem = new RedPotion(this,
-                                               this.gameObjDB[itemName].GetInventoryPictureBox(),
+                                               pictureBox,
                                                new Point(0, 0),
-                                               this.gameObjDB[itemName].GetAbility(),
-                                               itemName);
+                                               UsableItemDB[UsableItemType.RedPotion]);
                     break;
                 case "BluePotion":
                     returnItem = new BluePotion(this,
-                                                this.gameObjDB[itemName].GetInventoryPictureBox(),
+                                                pictureBox,
                                                 new Point(0, 0),
-                                                this.gameObjDB[itemName].GetAbility(),
-                                                itemName);
+                                                UsableItemDB[UsableItemType.BluePotion]);
                     break;
                 case "Sword":
                     returnItem = new Weapon(this,
-                                              this.gameObjDB[itemName].GetInventoryPictureBox(),
-                                              new Point(0, 0),
-                                              this.gameObjDB[itemName].GetAbility(),
-                                              itemName);
+                                            pictureBox,
+                                            new Point(0, 0),
+                                            WeaponDB[WeaponType.Sword]);
                     break;
                 case "Bow":
                     returnItem = new Weapon(this,
-                                            this.gameObjDB[itemName].GetInventoryPictureBox(),
+                                            pictureBox,
                                             new Point(0, 0),
-                                            this.gameObjDB[itemName].GetAbility(),
-                                            itemName);
+                                            WeaponDB[WeaponType.Bow]);
                     break;
                 case "Maze":
                     returnItem = new Weapon(this,
-                                             this.gameObjDB[itemName].GetInventoryPictureBox(),
-                                             new Point(0, 0),
-                                             this.gameObjDB[itemName].GetAbility(),
-                                             itemName);
+                                            pictureBox,
+                                            new Point(0, 0),
+                                            WeaponDB[WeaponType.Maze]);
                     break;
                 default:
                     return null;
@@ -220,26 +305,16 @@ namespace AdventureGame
 
         public void GenerateItem()
         {
-            // itemData에서 랜덤으로 1개 택하여 아이템 생성
-            Weapon weapon = itemData[0] as Weapon;
-            Weapon newWeapon = new Weapon(this, weapon.PbIngameItem, weapon.PbInventoryItem, GetRandomPosition(), weapon.Power, weapon.Name);
-            newWeapon.ActiveIngame(true);
-            inGameItems.Add(newWeapon);
-
-            weapon = itemData[1] as Weapon;
-            newWeapon = new Weapon(this, weapon.PbIngameItem, weapon.PbInventoryItem, GetRandomPosition(), weapon.Power, weapon.Name);
-            newWeapon.ActiveIngame(true);
-            inGameItems.Add(newWeapon);
-
-            RedPotion redPotion = itemData[3] as RedPotion;
-            RedPotion newRedPotion = new RedPotion(this, redPotion.PbIngameItem, redPotion.PbInventoryItem, GetRandomPosition(), redPotion.Amount, redPotion.Name);
-            newRedPotion.ActiveIngame(true);
-            inGameItems.Add(newRedPotion);
+            inGameItems.Add(CreateItem("Sword", true));
+            inGameItems.Add(CreateItem("Bow", true));
+            inGameItems.Add(CreateItem("Maze", true));
+            inGameItems.Add(CreateItem("RedPotion", true));
+            inGameItems.Add(CreateItem("BluePotion", true));
         }
 
         private Point GetRandomPosition()
         {
-            return new Point(randomMaker.Next(boundary.X, boundary.X + boundary.Width), randomMaker.Next(boundary.Y, boundary.Y + boundary.Height));
+            return new Point(randomMaker.Next(map.Boundary.X, map.Boundary.X + map.Boundary.Width), randomMaker.Next(map.Boundary.Y, map.Boundary.Y + map.Boundary.Height));
         }
 
         public void Equip(string weaponName)

@@ -10,21 +10,21 @@ namespace AdventureGame
 {
     class Weapon : Item
     {
-        int power;
+        WeaponInfo info;
 
-        public Weapon(Game game, PictureBox pictureBox, Point pose, int power, string name)
-            : base(game, pictureBox, pose, name)
+        public Weapon(Game game, PictureBox pictureBox, Point pose, WeaponInfo weaponInfo)
+            : base(game, pictureBox, pose)
         {
-            this.power = power;
+            this.info = weaponInfo;
         }
 
-        public Weapon(Game game, PictureBox pictureBox, int x, int y, int power, string name)
-            : base(game, pictureBox, x, y, name)
+        public Weapon(Game game, PictureBox pictureBox, int x, int y, WeaponInfo weaponInfo)
+            : base(game, pictureBox, x, y)
         {
-            this.power = power;
+            this.info = weaponInfo;
         }
 
-        public int Power { get { return power; } }
+        public WeaponInfo Info { get { return info; } }
         public void Attack(EnumClass.MoveDir dir, int UserPower)
         {
             for (int i = 0; i < game.enemies.Count; i++)
@@ -35,7 +35,7 @@ namespace AdventureGame
 
                 // 무기는 적을 공격한다
                 Enemy enemy = collidObj as Enemy;
-                enemy.Attacked(this.Power + UserPower);
+                enemy.Attacked(this.info.Power + UserPower);
                 
             }
         }

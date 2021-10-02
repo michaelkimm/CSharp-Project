@@ -13,12 +13,12 @@ namespace AdventureGame
     public partial class Form1 : Form
     {
         Game gameManager;
-        List<Enemy> enemys;
         List<Item> itemdata;
         Map map;
         Random random = new Random();
 
-        Dictionary<string, GameObjectDB> gameObjectDataBase;
+        Dictionary<string, GameObjectUIDB> gameObjectDataBase;
+        Dictionary<WeaponType, WeaponInfo> weaponDB;
 
         public Form1()
         {
@@ -32,46 +32,51 @@ namespace AdventureGame
         void LoadDB()
         {
             // Player
-            gameObjectDataBase.Add("Player", new GameObjectDB("Player", pbPlayer, null));
+            gameObjectDataBase.Add("Player", new GameObjectUIDB(pbPlayer, null));
 
             // Enemy
-            gameObjectDataBase.Add("Bat", new GameObjectDB("Bat", pbBat, lbUI: lbBat));
-            gameObjectDataBase.Add("Ghost", new GameObjectDB("Ghost", pbGhost, lbUI: lbGhost));
-            gameObjectDataBase.Add("Ghoul", new GameObjectDB("Ghoul", pbGhoul, lbUI: lbGhoul));
+            gameObjectDataBase.Add("Bat", new GameObjectUIDB(pbBat, lbUI: lbBat));
+            gameObjectDataBase.Add("Ghost", new GameObjectUIDB(pbGhost, lbUI: lbGhost));
+            gameObjectDataBase.Add("Ghoul", new GameObjectUIDB(pbGhoul, lbUI: lbGhoul));
 
             // Weapon DB
-            gameObjectDataBase.Add("Sword", new GameObjectDB("Sword", pbSwordItem, pbSwordEquipped));
-            gameObjectDataBase.Add("Bow", new GameObjectDB("Bow", pbBowItem, pbBowEquipped));
-            gameObjectDataBase.Add("Maze", new GameObjectDB("Maze", pbMazeItem, pbMaceEquipped));
+            gameObjectDataBase.Add("Sword", new GameObjectUIDB(pbSwordItem, pbSwordEquipped));
+            gameObjectDataBase.Add("Bow", new GameObjectUIDB(pbBowItem, pbBowEquipped));
+            gameObjectDataBase.Add("Maze", new GameObjectUIDB(pbMazeItem, pbMaceEquipped));
 
             // Usable Item DB
-            gameObjectDataBase.Add("RedPotion", new GameObjectDB("RedPotion", pbPotionRedItem, pbPotionRedEquipped));
-            gameObjectDataBase.Add("BluePotion", new GameObjectDB("BluePotion", pbPotionBlueItem, pbPotionBlueEquipped));
+            gameObjectDataBase.Add("RedPotion", new GameObjectUIDB(pbPotionRedItem, pbPotionRedEquipped));
+            gameObjectDataBase.Add("BluePotion", new GameObjectUIDB(pbPotionBlueItem, pbPotionBlueEquipped));
         }
 
         void InitializeGame()
         {
-            InitializeEnemy();
             InitializeItem();
             InitializeMap();
-            gameManager = new Game(gameObjectDataBase, enemys, itemdata, map);
+            gameManager = new Game(gameObjectDataBase, map);
 
-        }
-
-        void InitializeEnemy()
-        {
-            enemys.Add(new Enemy(gameManager, pbBat, lbBat, 168, 63, enemySpeed, enemyHitPoint, enemyMp, enemyPower, enemyDetectLength));
-            enemys.Add(new Enemy(gameManager, pbGhost, lbGhost, 204, 63, enemySpeed, enemyHitPoint, enemyMp, enemyPower, enemyDetectLength));
-            enemys.Add(new Enemy(gameManager, pbGhoul, lbGhoul, 240, 63, enemySpeed, enemyHitPoint, enemyMp, enemyPower, enemyDetectLength));
         }
 
         void InitializeItem()
         {
-            itemdata.Add(new Weapon(gameManager, pbSwordItem, pbSwordEquipped, 0, 0, 1, "Sword"));
-            itemdata.Add(new Weapon(gameManager,pbBowItem, pbBowEquipped, 0, 0, 2, "Bow"));
-            itemdata.Add(new Weapon(gameManager, pbMazeItem, pbMaceEquipped, 0, 0, 3, "Maze"));
-            itemdata.Add(new RedPotion(gameManager,pbPotionRedItem, pbPotionRedEquipped, 0, 0, 5, "RedPotion"));
-            itemdata.Add(new BluePotion(gameManager, pbPotionBlueItem, pbPotionBlueEquipped, 0, 0, 5, "BluePotion"));
+            int swordPower = 1;
+            WeaponInfo swordInfo = new WeaponInfo(swordPower);
+
+            int bowPower = 2;
+            WeaponInfo bowInfo = new WeaponInfo(bowPower);
+
+            int mazePower = 3;
+            WeaponInfo mazeInfo = new WeaponInfo(mazePower);
+
+            weaponDB.Add(WeaponType.Sword, swordInfo);
+            weaponDB.Add(WeaponType.Bow, bowInfo);
+            weaponDB.Add(WeaponType.Maze, mazeInfo);
+
+            //itemdata.Add(new Weapon(gameManager, pbSwordItem, 0, 0, 1, "Sword"));
+            //itemdata.Add(new Weapon(gameManager,pbBowItem, 0, 0, 2, "Bow"));
+            //itemdata.Add(new Weapon(gameManager, pbMazeItem, 0, 0, 3, "Maze"));
+            //itemdata.Add(new RedPotion(gameManager,pbPotionRedItem, 0, 0, 5, "RedPotion"));
+            //itemdata.Add(new BluePotion(gameManager, pbPotionBlueItem, 0, 0, 5, "BluePotion"));
         }
         void InitializeMap()
         {
