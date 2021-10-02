@@ -8,9 +8,27 @@ using System.Windows.Forms;
 
 namespace AdventureGame
 {
+    struct Map
+    {
+        Rectangle boundary;
+        Point start;
+        Point end;
+
+        public Map(Rectangle boundary, Point start, Point end)
+        {
+            this.boundary = boundary;
+            this.start = start;
+            this.end = end;
+        }
+
+        public Rectangle Boundary { get { return boundary; } }
+        public Point Start { get { return start; } }
+        public Point End { get { return end; } }
+    }
+
     class Game
     {
-        public Player player;
+        Player player;
         public List<Enemy> enemies;
         List<Item> itemData;
         public Dictionary<string, GameObjectDB> gameObjDB;
@@ -19,15 +37,47 @@ namespace AdventureGame
         Rectangle boundary;
         Random randomMaker;
 
-        public Game(Dictionary<string, GameObjectDB> gameObjDB, Player player, List<Enemy> enemies, List<Item> itemdata, Rectangle boundary) //, Enemy[] enemys, Item[] items)
+        public Game(Dictionary<string, GameObjectDB> gameObjDB, List<Item> itemdata, Rectangle boundary) //, Enemy[] enemys, Item[] items)
         {
             this.gameObjDB = gameObjDB;
-            this.player = player;
-            this.enemies = enemies;
             this.itemData = itemdata;
             this.boundary = boundary;
             inGameItems = new List<Item>();
             randomMaker = new Random();
+
+            InitializePlayer();
+        }
+
+        void InitializePlayer()
+        {
+            int playerSpeed = 5;
+            int playerHP = 20;
+            int playerMP = 10;
+            int playerPower = 1;
+            int playerDetectLength = 30;
+
+            player = new Player(this,
+                                gameObjDB["Player"].Name,
+                                gameObjDB["Player"].GetIngamePictureBox(),
+                                gameObjDB["Player"].GetLabel(), new Point((int)((boundary.Bottom + boundary.Top) * 0.5f), (int)((boundary.Bottom + boundary.Top) * 0.1f)),
+                                playerSpeed,
+                                playerHP,
+                                playerMP,
+                                playerPower,
+                                playerDetectLength);
+        }
+
+        void InitializeEnemy()
+        {
+            int enemyHitPoint = 10;
+            int enemyMp = 15;
+            int enemySpeed = 8;
+            int enemyPower = 1;
+            int enemyDetectLength = 30;
+
+            enemies.Add(new Enemy(this, gameObjDB["Bat"].Name, gameObjDB["Bat"].GetIngamePictureBox(), gameObjDB["Bat"].GetLabel(), 168, 63, enemySpeed, enemyHitPoint, enemyMp, enemyPower, enemyDetectLength));
+            enemies.Add(new Enemy(this, gameObjDB["Ghost"].Name, gameObjDB["Ghost"].GetIngamePictureBox(), gameObjDB["Ghost"].GetLabel(), 204, 63, enemySpeed, enemyHitPoint, enemyMp, enemyPower, enemyDetectLength));
+            enemies.Add(new Enemy(this, gameObjDB["Ghoul"].Name, gameObjDB["Ghoul"].GetIngamePictureBox(), gameObjDB["Ghoul"].GetLabel(), 240, 63, enemySpeed, enemyHitPoint, enemyMp, enemyPower, enemyDetectLength));
         }
 
         public void Move(EnumClass.MoveDir dir, Random random)
@@ -35,7 +85,6 @@ namespace AdventureGame
             // 플레이어 움직임 & 아이템 획득
             player.Move(dir);
             
-
             // 적 움직임 & 공격
             MoveEnemy(random);
         }

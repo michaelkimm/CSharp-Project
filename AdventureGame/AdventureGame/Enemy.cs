@@ -11,14 +11,14 @@ namespace AdventureGame
     class Enemy : GameUnit
     {
 
-        public Enemy (Game game, PictureBox pictureBox, Label label, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
-            : base(game, pictureBox, label, pose, speed, initialHitPoint, initialMp, power, detectLength)
+        public Enemy (Game game, string name, PictureBox pictureBox, Label label, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+            : base(game, name, pictureBox, label, pose, speed, initialHitPoint, initialMp, power, detectLength)
         {
 
         }
 
-        public Enemy(Game game, PictureBox pictureBox, Label label, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
-            : base(game, pictureBox, label, x, y, speed, initialHitPoint, initialMp, power, detectLength)
+        public Enemy(Game game, string name, PictureBox pictureBox, Label label, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+            : base(game, name, pictureBox, label, x, y, speed, initialHitPoint, initialMp, power, detectLength)
         {
 
         }

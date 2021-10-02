@@ -30,18 +30,20 @@ namespace AdventureGame
     {
         protected PictureBox unitPictureBox;
         protected Label unitLabel;
-        
+
         // protected Ability ability;
 
+        protected string name;
         protected int hitPoint = 0;
         protected int mp = 0;
         protected int speed;
         protected int power;
         protected int detectLength;
 
-        public GameUnit(Game game, PictureBox pictureBox, Label unitLabel, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+        public GameUnit(Game game, string name, PictureBox pictureBox, Label unitLabel, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
             : base(game)
         {
+            this.name = name;
             unitPictureBox = pictureBox;
             this.unitLabel = unitLabel;
             this.pose = pose;
@@ -51,9 +53,10 @@ namespace AdventureGame
             this.power = power;
             this.detectLength = detectLength;
         }
-        public GameUnit(Game game, PictureBox pictureBox, Label unitLabel, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+        public GameUnit(Game game, string name, PictureBox pictureBox, Label unitLabel, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
             : base(game)
         {
+            this.name = name;
             unitPictureBox = pictureBox;
             this.unitLabel = unitLabel;
             this.pose = new Point(x, y);

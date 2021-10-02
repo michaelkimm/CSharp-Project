@@ -12,14 +12,14 @@ namespace AdventureGame
         string name;
         PictureBox pbIngame;
         PictureBox pbInventory;
-        int ability;
+        Label lbUI;
 
-        public GameObjectDB(string name, PictureBox pbIngame, PictureBox pbInventory, int ability)
+        public GameObjectDB(string name, PictureBox pbIngame, PictureBox pbInventory = null, Label lbUI = null)
         {
             this.name = name;
             this.pbIngame = pbIngame;
             this.pbInventory = pbInventory;
-            this.ability = ability;
+            this.lbUI = lbUI;
         }
 
         public PictureBox GetIngamePictureBox()
@@ -32,9 +32,9 @@ namespace AdventureGame
             return pbInventory;
         }
 
-        public int GetAbility()
+        public Label GetLabel()
         {
-            return ability;
+            return lbUI;
         }
 
         public string Name

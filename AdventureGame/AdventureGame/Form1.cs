@@ -12,23 +12,14 @@ namespace AdventureGame
 {
     public partial class Form1 : Form
     {
-        int playerSpeed = 10;
-        int playerHitPoint = 15;
-        int playerMp = 15;
-        int playerPower = 1;
-        int playerDetectLength = 30;
+        
 
-        int enemyHitPoint = 10;
-        int enemyMp = 15;
-        int enemySpeed = 8;
-        int enemyPower = 1;
-        int enemyDetectLength = 30;
+        
 
         Game gameManager;
-        Player player;
         List<Enemy> enemys;
         List<Item> itemdata;
-        Rectangle boundary;
+        Map map;
         Random random = new Random();
 
         Dictionary<string, GameObjectDB> gameObjectDataBase;
@@ -41,26 +32,33 @@ namespace AdventureGame
 
             InitializeGame();
         }
+
         void LoadDB()
         {
+            // Player
+            gameObjectDataBase.Add("Player", new GameObjectDB("Player", pbPlayer, null));
+
+            // Enemy
+            gameObjectDataBase.Add("Bat", new GameObjectDB("Bat", pbBat, lbUI: lbBat));
+            gameObjectDataBase.Add("Ghost", new GameObjectDB("Ghost", pbGhost, lbUI: lbGhost));
+            gameObjectDataBase.Add("Ghoul", new GameObjectDB("Ghoul", pbGhoul, lbUI: lbGhoul));
+
             // Weapon DB
-            gameObjectDataBase.Add("Sword", new GameObjectDB("Sword", pbSwordItem, pbSwordEquipped, 1));
-            gameObjectDataBase.Add("Bow", new GameObjectDB("Bow", pbBowItem, pbBowEquipped, 2));
-            gameObjectDataBase.Add("Maze", new GameObjectDB("Maze", pbMazeItem, pbMaceEquipped, 3));
+            gameObjectDataBase.Add("Sword", new GameObjectDB("Sword", pbSwordItem, pbSwordEquipped));
+            gameObjectDataBase.Add("Bow", new GameObjectDB("Bow", pbBowItem, pbBowEquipped));
+            gameObjectDataBase.Add("Maze", new GameObjectDB("Maze", pbMazeItem, pbMaceEquipped));
 
             // Usable Item DB
-            gameObjectDataBase.Add("RedPotion", new GameObjectDB("RedPotion", pbPotionRedItem, pbPotionRedEquipped, 5));
-            gameObjectDataBase.Add("BluePotion", new GameObjectDB("BluePotion", pbPotionBlueItem, pbPotionBlueEquipped, 10));
+            gameObjectDataBase.Add("RedPotion", new GameObjectDB("RedPotion", pbPotionRedItem, pbPotionRedEquipped));
+            gameObjectDataBase.Add("BluePotion", new GameObjectDB("BluePotion", pbPotionBlueItem, pbPotionBlueEquipped));
         }
 
         void InitializeGame()
         {
-
             InitializeEnemy();
             InitializeItem();
             InitializeMap();
-            gameManager = new Game(gameObjectDataBase, player, enemys, itemdata, boundary);
-            player = new Player(gameManager, pbPlayer, lbPlayer, 96, 63, playerSpeed, playerHitPoint, playerMp, playerPower, playerDetectLength);
+            gameManager = new Game(gameObjectDataBase, enemys, itemdata, boundary);
 
         }
 
