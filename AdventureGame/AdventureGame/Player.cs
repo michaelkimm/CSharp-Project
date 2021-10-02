@@ -13,14 +13,14 @@ namespace AdventureGame
         Weapon equipments = null;
         List<Item> inventory;
 
-        public Player(Game game, string name, PictureBox pictureBox, Label label, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
-            : base(game, name, pictureBox, label, pose, speed, initialHitPoint, initialMp, power, detectLength)
+        public Player(Game game, string name, PictureBox pictureBox, Label label, Point pose, PlayerCharacterInfo characterInfo)
+            : base(game, name, pictureBox, label, pose, characterInfo)
         {
             inventory = new List<Item>();
         }
 
-        public Player(Game game, string name, PictureBox pictureBox, Label label, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
-            : base(game, name, pictureBox, label, x, y, speed, initialHitPoint, initialMp, power, detectLength)
+        public Player(Game game, string name, PictureBox pictureBox, Label label, int x, int y, PlayerCharacterInfo characterInfo)
+            : base(game, name, pictureBox, label, x, y, characterInfo)
         {
             inventory = new List<Item>();
         }

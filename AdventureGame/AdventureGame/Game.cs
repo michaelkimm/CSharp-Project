@@ -26,6 +26,35 @@ namespace AdventureGame
         public Point End { get { return end; } }
     }
 
+    struct PlayerCharacterInfo
+    {
+        int hp;
+        int mp;
+        int speed;
+        int power;
+        int detectLength;
+
+        public PlayerCharacterInfo(int hp, int mp, int speed, int power, int detectLength)
+        {
+            this.hp = hp;
+            this.mp = mp;
+            this.speed = speed;
+            this.power = power;
+            this.detectLength = detectLength;
+        }
+
+        public int Hp { get { return hp; } }
+        public int Mp { get { return mp; } }
+        public int Speed { get { return speed; } }
+        public int Power { get { return power; } }
+        public int DetectLength { get { return detectLength; } }
+
+    }
+
+    struct ItemInfo
+    {
+    }
+
     class Game
     {
         Player player;
@@ -34,14 +63,14 @@ namespace AdventureGame
         public Dictionary<string, GameObjectDB> gameObjDB;
         public List<Item> inGameItems;
 
-        Rectangle boundary;
+        Map map;
         Random randomMaker;
 
-        public Game(Dictionary<string, GameObjectDB> gameObjDB, List<Item> itemdata, Rectangle boundary) //, Enemy[] enemys, Item[] items)
+        public Game(Dictionary<string, GameObjectDB> gameObjDB, List<Item> itemdata, Map map) //, Enemy[] enemys, Item[] items)
         {
             this.gameObjDB = gameObjDB;
             this.itemData = itemdata;
-            this.boundary = boundary;
+            this.map = map;
             inGameItems = new List<Item>();
             randomMaker = new Random();
 
@@ -55,25 +84,40 @@ namespace AdventureGame
             int playerMP = 10;
             int playerPower = 1;
             int playerDetectLength = 30;
+            PlayerCharacterInfo playerInfo = new PlayerCharacterInfo(playerSpeed, playerHP, playerMP, playerPower, playerDetectLength);
 
             player = new Player(this,
                                 gameObjDB["Player"].Name,
                                 gameObjDB["Player"].GetIngamePictureBox(),
-                                gameObjDB["Player"].GetLabel(), new Point((int)((boundary.Bottom + boundary.Top) * 0.5f), (int)((boundary.Bottom + boundary.Top) * 0.1f)),
-                                playerSpeed,
-                                playerHP,
-                                playerMP,
-                                playerPower,
-                                playerDetectLength);
+                                gameObjDB["Player"].GetLabel(), 
+                                map.Start,
+                                playerInfo);
         }
 
         void InitializeEnemy()
         {
-            int enemyHitPoint = 10;
-            int enemyMp = 15;
-            int enemySpeed = 8;
-            int enemyPower = 1;
-            int enemyDetectLength = 30;
+            int batSpeed = 5;
+            int batHP = 20;
+            int batMP = 10;
+            int batPower = 1;
+            int batDetectLength = 30;
+            PlayerCharacterInfo batInfo = new PlayerCharacterInfo(batSpeed, batHP, batMP, batPower, batDetectLength);
+
+            int ghostSpeed = 5;
+            int ghostHP = 20;
+            int ghostMP = 10;
+            int ghostPower = 1;
+            int ghostDetectLength = 30;
+            PlayerCharacterInfo ghostInfo = new PlayerCharacterInfo(ghostSpeed, ghostHP, ghostMP, ghostPower, ghostDetectLength);
+
+            int ghoulSpeed = 5;
+            int ghoulHP = 20;
+            int ghoulMP = 10;
+            int ghoulPower = 1;
+            int ghoulDetectLength = 30;
+            PlayerCharacterInfo ghoulInfo = new PlayerCharacterInfo(ghoulSpeed, ghoulHP, ghoulMP, ghoulPower, ghoulDetectLength);
+
+
 
             enemies.Add(new Enemy(this, gameObjDB["Bat"].Name, gameObjDB["Bat"].GetIngamePictureBox(), gameObjDB["Bat"].GetLabel(), 168, 63, enemySpeed, enemyHitPoint, enemyMp, enemyPower, enemyDetectLength));
             enemies.Add(new Enemy(this, gameObjDB["Ghost"].Name, gameObjDB["Ghost"].GetIngamePictureBox(), gameObjDB["Ghost"].GetLabel(), 204, 63, enemySpeed, enemyHitPoint, enemyMp, enemyPower, enemyDetectLength));
@@ -135,17 +179,17 @@ namespace AdventureGame
             {
                 case "RedPotion":
                     returnItem = new RedPotion(this,
-                                                        this.gameObjDB[itemName].GetInventoryPictureBox(),
-                                                        new Point(0, 0),
-                                                        this.gameObjDB[itemName].GetAbility(),
-                                                        itemName);
+                                               this.gameObjDB[itemName].GetInventoryPictureBox(),
+                                               new Point(0, 0),
+                                               this.gameObjDB[itemName].GetAbility(),
+                                               itemName);
                     break;
                 case "BluePotion":
                     returnItem = new BluePotion(this,
-                                                        this.gameObjDB[itemName].GetInventoryPictureBox(),
-                                                        new Point(0, 0),
-                                                        this.gameObjDB[itemName].GetAbility(),
-                                                        itemName);
+                                                this.gameObjDB[itemName].GetInventoryPictureBox(),
+                                                new Point(0, 0),
+                                                this.gameObjDB[itemName].GetAbility(),
+                                                itemName);
                     break;
                 case "Sword":
                     returnItem = new Weapon(this,

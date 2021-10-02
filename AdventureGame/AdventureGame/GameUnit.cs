@@ -8,24 +8,6 @@ using System.Drawing;
 
 namespace AdventureGame
 {
-
-    public struct Ability
-    {
-        public int HitPoint;
-        public int Mp;
-        public int Speed;
-        public int Power;
-        public int DetectLength;
-
-        public Ability(int initialHitPoint, int initialMp, int speed, int power, int detectLength)
-        {
-            this.HitPoint = initialHitPoint;
-            this.Mp = initialMp;
-            this.Speed = speed;
-            this.Power = power;
-            this.DetectLength = detectLength;
-        }
-    }
     abstract class GameUnit : GameObject
     {
         protected PictureBox unitPictureBox;
@@ -40,31 +22,31 @@ namespace AdventureGame
         protected int power;
         protected int detectLength;
 
-        public GameUnit(Game game, string name, PictureBox pictureBox, Label unitLabel, Point pose, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+        public GameUnit(Game game, string name, PictureBox pictureBox, Label unitLabel, Point pose, PlayerCharacterInfo characterInfo)
             : base(game)
         {
             this.name = name;
             unitPictureBox = pictureBox;
             this.unitLabel = unitLabel;
             this.pose = pose;
-            hitPoint = initialHitPoint;
-            mp = initialMp;
-            this.speed = speed;
-            this.power = power;
-            this.detectLength = detectLength;
+            hitPoint = characterInfo.Hp;
+            mp = characterInfo.Mp;
+            this.speed = characterInfo.Speed;
+            this.power = characterInfo.Power;
+            this.detectLength = characterInfo.DetectLength;
         }
-        public GameUnit(Game game, string name, PictureBox pictureBox, Label unitLabel, int x, int y, int speed, int initialHitPoint, int initialMp, int power, int detectLength)
+        public GameUnit(Game game, string name, PictureBox pictureBox, Label unitLabel, int x, int y, PlayerCharacterInfo characterInfo)
             : base(game)
         {
             this.name = name;
             unitPictureBox = pictureBox;
             this.unitLabel = unitLabel;
             this.pose = new Point(x, y);
-            this.speed = speed;
-            hitPoint = initialHitPoint;
-            mp = initialMp;
-            this.power = power;
-            this.detectLength = detectLength;
+            hitPoint = characterInfo.Hp;
+            mp = characterInfo.Mp;
+            this.speed = characterInfo.Speed;
+            this.power = characterInfo.Power;
+            this.detectLength = characterInfo.DetectLength;
         }
 
         public PictureBox UnitPictureBox { get { return unitPictureBox; } }

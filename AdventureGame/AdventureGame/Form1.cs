@@ -12,10 +12,6 @@ namespace AdventureGame
 {
     public partial class Form1 : Form
     {
-        
-
-        
-
         Game gameManager;
         List<Enemy> enemys;
         List<Item> itemdata;
@@ -58,7 +54,7 @@ namespace AdventureGame
             InitializeEnemy();
             InitializeItem();
             InitializeMap();
-            gameManager = new Game(gameObjectDataBase, enemys, itemdata, boundary);
+            gameManager = new Game(gameObjectDataBase, enemys, itemdata, map);
 
         }
 
@@ -79,7 +75,11 @@ namespace AdventureGame
         }
         void InitializeMap()
         {
-            boundary = new Rectangle(0, 0, 600, 300);
+            Rectangle boundary = new Rectangle(0, 0, 600, 300);
+
+            map = new Map(boundary,
+                          new Point((int)((boundary.Bottom + boundary.Top) * 0.5f), (int)((boundary.Bottom + boundary.Top) * 0.1f)),
+                          new Point((int)((boundary.Bottom + boundary.Top) * 0.5f), (int)((boundary.Bottom + boundary.Top) * 0.9f)));
         }
 
         private void btnMoveUp_Click(object sender, EventArgs e)
