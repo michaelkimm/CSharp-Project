@@ -51,33 +51,10 @@ namespace AdventureGame
 
         void InitializeGame()
         {
-            InitializeItem();
             InitializeMap();
             gameManager = new Game(gameObjectDataBase, map);
-
         }
 
-        void InitializeItem()
-        {
-            int swordPower = 1;
-            WeaponInfo swordInfo = new WeaponInfo(swordPower);
-
-            int bowPower = 2;
-            WeaponInfo bowInfo = new WeaponInfo(bowPower);
-
-            int mazePower = 3;
-            WeaponInfo mazeInfo = new WeaponInfo(mazePower);
-
-            weaponDB.Add(WeaponType.Sword, swordInfo);
-            weaponDB.Add(WeaponType.Bow, bowInfo);
-            weaponDB.Add(WeaponType.Maze, mazeInfo);
-
-            //itemdata.Add(new Weapon(gameManager, pbSwordItem, 0, 0, 1, "Sword"));
-            //itemdata.Add(new Weapon(gameManager,pbBowItem, 0, 0, 2, "Bow"));
-            //itemdata.Add(new Weapon(gameManager, pbMazeItem, 0, 0, 3, "Maze"));
-            //itemdata.Add(new RedPotion(gameManager,pbPotionRedItem, 0, 0, 5, "RedPotion"));
-            //itemdata.Add(new BluePotion(gameManager, pbPotionBlueItem, 0, 0, 5, "BluePotion"));
-        }
         void InitializeMap()
         {
             Rectangle boundary = new Rectangle(0, 0, 600, 300);
@@ -118,7 +95,7 @@ namespace AdventureGame
 
         private void pbSwordEquipped_Click(object sender, EventArgs e)
         {
-            gameManager.Equip("Sword");
+            gameManager.Equip(WeaponType.Sword);
         }
 
         private void btnAtkUp_Click(object sender, EventArgs e)
@@ -165,12 +142,12 @@ namespace AdventureGame
 
         private void pbBowEquipped_Click(object sender, EventArgs e)
         {
-            gameManager.Equip("Bow");
+            gameManager.Equip(WeaponType.Bow);
         }
 
         private void pbMaceEquipped_Click(object sender, EventArgs e)
         {
-            gameManager.Equip("Mace");
+            gameManager.Equip(WeaponType.Maze);
         }
 
         private void pbPlayer_Click(object sender, EventArgs e)

@@ -15,17 +15,15 @@ namespace AdventureGame
 
         // protected Ability ability;
 
-        protected string name;
         protected int hitPoint = 0;
         protected int mp = 0;
         protected int speed;
         protected int power;
         protected int detectLength;
 
-        public GameUnit(Game game, string name, PictureBox pictureBox, Label unitLabel, Point pose, PlayerCharacterInfo characterInfo)
+        public GameUnit(Game game, PictureBox pictureBox, Label unitLabel, Point pose, PlayerCharacterInfo characterInfo)
             : base(game)
         {
-            this.name = name;
             unitPictureBox = pictureBox;
             this.unitLabel = unitLabel;
             this.pose = pose;
@@ -35,10 +33,9 @@ namespace AdventureGame
             this.power = characterInfo.Power;
             this.detectLength = characterInfo.DetectLength;
         }
-        public GameUnit(Game game, string name, PictureBox pictureBox, Label unitLabel, int x, int y, PlayerCharacterInfo characterInfo)
+        public GameUnit(Game game, PictureBox pictureBox, Label unitLabel, int x, int y, PlayerCharacterInfo characterInfo)
             : base(game)
         {
-            this.name = name;
             unitPictureBox = pictureBox;
             this.unitLabel = unitLabel;
             this.pose = new Point(x, y);

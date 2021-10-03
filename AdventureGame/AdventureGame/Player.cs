@@ -13,14 +13,14 @@ namespace AdventureGame
         Weapon equipments = null;
         List<Item> inventory;
 
-        public Player(Game game, string name, PictureBox pictureBox, Label label, Point pose, PlayerCharacterInfo characterInfo)
-            : base(game, name, pictureBox, label, pose, characterInfo)
+        public Player(Game game, PictureBox pictureBox, Label label, Point pose, PlayerCharacterInfo characterInfo)
+            : base(game, pictureBox, label, pose, characterInfo)
         {
             inventory = new List<Item>();
         }
 
-        public Player(Game game, string name, PictureBox pictureBox, Label label, int x, int y, PlayerCharacterInfo characterInfo)
-            : base(game, name, pictureBox, label, x, y, characterInfo)
+        public Player(Game game, PictureBox pictureBox, Label label, int x, int y, PlayerCharacterInfo characterInfo)
+            : base(game, pictureBox, label, x, y, characterInfo)
         {
             inventory = new List<Item>();
         }
@@ -131,7 +131,7 @@ namespace AdventureGame
             }
         }
 
-        public void Equip(String weaponName)
+        public void Equip(WeaponType weaponType)
         {
             for (int i = 0; i < inventory.Count; i++)
             {
@@ -139,7 +139,7 @@ namespace AdventureGame
                     continue;
 
                 Weapon weapon = inventory[i] as Weapon;
-                if (!(weapon.Name.Equals(weaponName)))
+                if (!(weapon.Info.GetWeaponType == weaponType))
                     continue;
 
                 if (equipments != null)

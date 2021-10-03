@@ -11,6 +11,7 @@ namespace AdventureGame
     {
         public Game game;
         protected Point pose;
+        private int collisionRange;
         public GameObject(Game game)
         {
             this.game = game;
@@ -18,7 +19,7 @@ namespace AdventureGame
 
         public GameObject CollisionWith(GameObject physicalObj)
         {
-            if ((physicalObj.GetPose().X - this.pose.X) * (physicalObj.GetPose().X - this.pose.X) + (physicalObj.GetPose().Y - this.pose.Y) * (physicalObj.GetPose().Y - this.pose.Y) <= 10 * 10)
+            if ((physicalObj.GetPose().X - this.pose.X) * (physicalObj.GetPose().X - this.pose.X) + (physicalObj.GetPose().Y - this.pose.Y) * (physicalObj.GetPose().Y - this.pose.Y) <= collisionRange * collisionRange)
                 return physicalObj;
 
             return null;

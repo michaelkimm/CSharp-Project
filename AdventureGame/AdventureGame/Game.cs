@@ -59,28 +59,34 @@ namespace AdventureGame
 
     struct WeaponInfo
     {
+        WeaponType weaponType;
         int power;
         int attackRange;
 
-        public WeaponInfo(int power, int attackRange)
+        public WeaponInfo(WeaponType weaponType, int power, int attackRange)
         {
+            this.weaponType = weaponType;
             this.power = power;
             this.attackRange = attackRange;
         }
 
+        public WeaponType GetWeaponType { get { return weaponType; } }
         public int Power { get { return power; } }
         public int AttackRange { get { return attackRange; } }
     }
 
     struct UsableItemInfo
     {
+        UsableItemType usableItemType;
         int value;
         
-        public UsableItemInfo(int value)
+        public UsableItemInfo(UsableItemType usableItemType, int value)
         {
+            this.usableItemType = usableItemType;
             this.value = value;
         }
 
+        public UsableItemType GetUsableItemType { get { return usableItemType; } }
         public int Value { get { return value; } }
     }
 
@@ -171,15 +177,15 @@ namespace AdventureGame
             // 무기 데이터 업로드
             int swordPower = 1;
             int swordAttackRange = 5;
-            WeaponInfo swordInfo = new WeaponInfo(swordPower, swordAttackRange);
+            WeaponInfo swordInfo = new WeaponInfo(WeaponType.Sword, swordPower, swordAttackRange);
 
             int bowPower = 2;
             int bowAttackRange = 10;
-            WeaponInfo bowInfo = new WeaponInfo(bowPower, bowAttackRange);
+            WeaponInfo bowInfo = new WeaponInfo(WeaponType.Bow, bowPower, bowAttackRange);
 
             int mazePower = 3;
             int mazeAttackRange = 3;
-            WeaponInfo mazeInfo = new WeaponInfo(mazePower, mazeAttackRange);
+            WeaponInfo mazeInfo = new WeaponInfo(WeaponType.Maze, mazePower, mazeAttackRange);
 
             WeaponDB.Add(WeaponType.Sword, swordInfo);
             WeaponDB.Add(WeaponType.Bow, bowInfo);
@@ -189,10 +195,10 @@ namespace AdventureGame
 
             // 소비 가능한 아이템 데이터 업로드
             int hpPlus = 5;
-            UsableItemInfo redPotionInfo = new UsableItemInfo(hpPlus);
+            UsableItemInfo redPotionInfo = new UsableItemInfo(UsableItemType.RedPotion, hpPlus);
 
             int mpPlus = 5;
-            UsableItemInfo bluePotionInfo = new UsableItemInfo(mpPlus);
+            UsableItemInfo bluePotionInfo = new UsableItemInfo(UsableItemType.BluePotion, mpPlus);
 
             UsableItemDB.Add(UsableItemType.RedPotion, redPotionInfo);
             UsableItemDB.Add(UsableItemType.BluePotion, bluePotionInfo);
@@ -317,9 +323,9 @@ namespace AdventureGame
             return new Point(randomMaker.Next(map.Boundary.X, map.Boundary.X + map.Boundary.Width), randomMaker.Next(map.Boundary.Y, map.Boundary.Y + map.Boundary.Height));
         }
 
-        public void Equip(string weaponName)
+        public void Equip(WeaponType weaponType)
         {
-            player.Equip(weaponName);
+            player.Equip(weaponType);
         }
 
         public void Use(string consumableItem)
